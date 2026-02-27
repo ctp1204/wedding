@@ -8,6 +8,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <style>
         :root {
             --rose: #e8a0a0;
@@ -121,7 +122,7 @@
 
         .wedding-label {
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+            font-size: 1.2rem;
             letter-spacing: 0.4em;
             color: var(--gold);
             text-transform: uppercase;
@@ -206,7 +207,7 @@
 
         .section-tag {
             font-family: 'Cinzel', serif;
-            font-size: 0.65rem;
+            font-size: 1rem;
             letter-spacing: 0.45em;
             color: var(--gold);
             text-transform: uppercase;
@@ -643,7 +644,7 @@
 
         .welcome-tag {
             font-family: 'Cinzel', serif;
-            font-size: 0.65rem;
+            font-size: 1.25rem;
             letter-spacing: 0.5em;
             color: var(--gold);
             text-transform: uppercase;
@@ -833,6 +834,644 @@
             bottom: 0;
             right: 0;
         }
+
+        /* ─── DARK MODE ─── */
+        body.dark {
+            --warm-white: #1a1010;
+            --cream: #231616;
+            --text-dark: #f0e8e8;
+            --text-mid: #c4a0a0;
+            --gold-light: #b8960a;
+        }
+
+        body.dark .event-card,
+        body.dark .story-text {
+            background: #2a1818;
+            border-color: #5a3a3a;
+        }
+
+        body.dark #rsvp {
+            background: linear-gradient(135deg, #0e0808, #1a1010);
+        }
+
+        body.dark footer {
+            border-color: #5a3a3a;
+        }
+
+        body.dark #welcome-overlay {
+            background: #1a1010;
+        }
+
+        #dark-toggle {
+            position: fixed;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-light);
+            background: rgba(255, 250, 245, 0.7);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #dark-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* ─── COUPLE INTRO ─── */
+        #couple-intro {
+            max-width: 900px;
+        }
+
+        .couple-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media(max-width:600px) {
+            .couple-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .couple-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--gold-light);
+            border-radius: 12px;
+            background: var(--cream);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .couple-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(201, 168, 76, 0.15);
+        }
+
+        .couple-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 5px solid var(--rose);
+            box-shadow: 0 8px 25px rgba(201, 100, 100, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .couple-photo:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: var(--gold);
+        }
+
+        /* Căn chỉnh riêng cho ảnh cô dâu nếu ảnh gốc lệch */
+        .bride-photo {
+            object-position: 50% 50%;
+        }
+
+        .couple-role {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .couple-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 0.7rem;
+        }
+
+        .couple-bio {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--text-mid);
+        }
+
+        /* ─── BRIDAL PARTY ─── */
+        #bridal-party {
+            max-width: 960px;
+        }
+
+        .party-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .party-card {
+            text-align: center;
+        }
+
+        .party-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.8rem;
+            border: 3px solid var(--gold-light);
+            transition: transform 0.3s;
+        }
+
+        .party-card:hover .party-photo {
+            transform: scale(1.06);
+        }
+
+        .party-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .party-role {
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        /* ─── MAPS ─── */
+        #maps {
+            max-width: 960px;
+        }
+
+        .maps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media(max-width:680px) {
+            .maps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .map-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gold-light);
+        }
+
+        .map-label {
+            padding: 1rem 1.2rem;
+            background: var(--cream);
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .map-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+        }
+
+        .map-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 0.2rem 0;
+        }
+
+        .map-addr {
+            font-size: 0.8rem;
+            color: var(--text-mid);
+        }
+
+        .map-card iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            display: block;
+        }
+
+        .map-btn {
+            display: block;
+            text-align: center;
+            padding: 0.7rem;
+            background: var(--rose-deep);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--rose);
+        }
+
+        /* ─── SCHEDULE ─── */
+        #schedule {
+            max-width: 700px;
+        }
+
+        .schedule-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .schedule-list::before {
+            content: '';
+            position: absolute;
+            left: 70px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--gold-light) 10%, var(--gold-light) 90%, transparent);
+        }
+
+        .sch-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1rem 0;
+        }
+
+        .sch-time {
+            width: 56px;
+            text-align: right;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            padding-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .sch-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--rose-deep);
+            border: 2px solid var(--warm-white);
+            box-shadow: 0 0 0 3px var(--rose);
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sch-body {
+            flex: 1;
+        }
+
+        .sch-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .sch-desc {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            margin-top: 0.2rem;
+        }
+
+        /* ─── GALLERY ─── */
+        #gallery {
+            max-width: 960px;
+        }
+
+        .gallery-grid {
+            columns: 3 200px;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        @media(max-width:500px) {
+            .gallery-grid {
+                columns: 2;
+            }
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '⤢';
+            position: absolute;
+            inset: 0;
+            background: rgba(58, 42, 42, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            background: rgba(10, 5, 5, 0.92);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox.open {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 88vh;
+            border-radius: 4px;
+            object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        #lb-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        #lb-prev,
+        #lb-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        #lb-prev {
+            left: 1.5rem;
+        }
+
+        #lb-next {
+            right: 1.5rem;
+        }
+
+        #lb-prev:hover,
+        #lb-next:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ─── GUESTBOOK ─── */
+        #guestbook {
+            max-width: 760px;
+        }
+
+        .gb-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .gb-form input,
+        .gb-form textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gold-light);
+            background: var(--cream);
+            color: var(--text-dark);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.88rem;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .gb-form input:focus,
+        .gb-form textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .gb-form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .btn-gb {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .btn-gb:hover {
+            background: var(--gold);
+            color: #fff;
+        }
+
+        .gb-list {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .gb-entry {
+            padding: 1.2rem 1.4rem;
+            background: var(--cream);
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            border-left: 3px solid var(--rose-deep);
+        }
+
+        .gb-entry-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .gb-entry-msg {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            margin-top: 0.3rem;
+            line-height: 1.7;
+        }
+
+        .gb-entry-date {
+            font-size: 0.7rem;
+            color: var(--gold);
+            margin-top: 0.4rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* ─── GIFT / QR ─── */
+        #gift {
+            max-width: 760px;
+        }
+
+        .gift-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        @media(max-width:600px) {
+            .gift-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bank-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #3a2a2a, #5a3535);
+            border-radius: 12px;
+            color: var(--cream);
+        }
+
+        .bank-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .bank-holder {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .bank-num {
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            margin: 0.8rem 0;
+            color: var(--gold-light);
+        }
+
+        .btn-copy {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--gold-light);
+            color: var(--gold-light);
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .btn-copy:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+        }
+
+        .qr-box {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid var(--gold-light);
+            border-radius: 12px;
+            background: var(--cream);
+        }
+
+        .qr-box #qrcode {
+            margin: 1rem auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .qr-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .qr-hint {
+            font-size: 0.75rem;
+            color: var(--text-mid);
+            margin-top: 0.8rem;
+        }
+
+        /* ─── CURSOR HEARTS ─── */
+        .cursor-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1rem;
+            z-index: 9999;
+            animation: heart-float 1s ease-out forwards;
+        }
+
+        @keyframes heart-float {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.5);
+            }
+        }
     </style>
 </head>
 
@@ -877,6 +1516,79 @@
         <div class="scroll-hint">Cuộn xuống</div>
     </div>
 
+    <!-- Dark Mode Toggle -->
+    <button id="dark-toggle" onclick="toggleDark()" title="Chuyển giao diện">🌙</button>
+
+    <!-- ═══════════ COUPLE INTRO ═══════════ -->
+    <section id="couple-intro" class="reveal">
+        <p class="section-tag">Nhân vật chính</p>
+        <h2 class="section-title">Chú rể & <em>Cô dâu</em></h2>
+        <div class="couple-cards">
+            <div class="couple-card reveal">
+                <img class="couple-photo"
+                    src="https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/642716831_3087214864797211_6784234955589024821_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeFVwNOZRFiCCX0uBkseKNycMGj3AkVgUTQwaPcCRWBRNOkkz66pdk8jc7i-yroKLmAJLFrfmZGnPn91kj0_8_Pq&_nc_ohc=gMyvGazWLe0Q7kNvwEaQmEl&_nc_oc=AdlQp0j-k5wbN7dVbZsliFfjML5U8-MPDC38jgnP4ksmg9VucnKNkrwPGIgS_bWGRBE&_nc_zt=23&_nc_ht=scontent.fdad1-2.fna&_nc_gid=KBJHpqpgD1K2smunkDGrSg&oh=00_AfsEsPjrmxT1DoIHxwT7TWjjyGw5fk7G9d7HsObSa58Hjw&oe=69A72A1E"
+                    alt="Chú rể Quốc Cường">
+                <p class="couple-role">Chú rể</p>
+                <h3 class="couple-name">Lê Quốc Cường</h3>
+                <p class="couple-bio">Chàng trai với nụ cười ấm áp, luôn biết cách khiến Kim Chi bật cười trong mọi hoàn
+                    cảnh. Anh tin rằng tình yêu là hành trình cùng nhau lớn lên.</p>
+            </div>
+            <div class="couple-card reveal">
+                <img class="couple-photo bride-photo"
+                    src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/522667473_2864084873776879_3354141089457775505_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeF9BeWgix0RTO7qq2B-EXs8_UURx3jqDkn9RRHHeOoOSSxj2bgPQCR2_qvXWCtD--JfLrbfbRqpYU3dYbHUS7-b&_nc_ohc=i0p0afvziOMQ7kNvwGIn0Uv&_nc_oc=AdnOGpyxe4Mp20IVN4A-IkaDSyh1XGb_aAttu1IMzpK2LLe56JPmVapc24T4TDXSA9Q&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=6e5LeexpHWToMJVzXjfFOQ&oh=00_Aftgmb0ndvIIRK_JrYOlYwiOQEkZjckzE7kUbNcZ3d9hKQ&oe=69A7472C"
+                    alt="Cô dâu Kim Chi">
+                <p class="couple-role">Cô dâu</p>
+                <h3 class="couple-name">Kim Chi</h3>
+                <p class="couple-bio">Cô gái dịu dàng với trái tim rộng lớn, yêu thích những buổi chiều cà phê bên người
+                    thương. Cô tin rằng hạnh phúc nằm trong những điều nhỏ bé mỗi ngày.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ BRIDAL PARTY ═══════════ -->
+    <!-- <section id="bridal-party" class="reveal">
+        <p class="section-tag">Những người đặc biệt</p>
+        <h2 class="section-title">Phù dâu & <em>Phù rể</em></h2>
+        <div class="party-grid">
+            <div class="party-card reveal">
+                <img class="party-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80"
+                    alt="Phù dâu 1">
+                <p class="party-name">Minh Anh</p>
+                <p class="party-role">Phù dâu</p>
+            </div>
+            <div class="party-card reveal">
+                <img class="party-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80"
+                    alt="Phù dâu 2">
+                <p class="party-name">Thu Hà</p>
+                <p class="party-role">Phù dâu</p>
+            </div>
+            <div class="party-card reveal">
+                <img class="party-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80"
+                    alt="Phù rể 1">
+                <p class="party-name">Minh Tuấn</p>
+                <p class="party-role">Phù rể</p>
+            </div>
+            <div class="party-card reveal">
+                <img class="party-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80"
+                    alt="Phù rể 2">
+                <p class="party-name">Hoàng Nam</p>
+                <p class="party-role">Phù rể</p>
+            </div>
+            <div class="party-card reveal">
+                <img class="party-photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80"
+                    alt="Phù dâu 3">
+                <p class="party-name">Lan Phương</p>
+                <p class="party-role">Phù dâu</p>
+            </div>
+            <div class="party-card reveal">
+                <img class="party-photo" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=300&q=80"
+                    alt="Phù rể 3">
+                <p class="party-name">Đức Anh</p>
+                <p class="party-role">Phù rể</p>
+            </div>
+        </div>
+    </section> -->
+
     <!-- ═══════════ COUNTDOWN ═══════════ -->
     <section id="countdown" class="reveal">
         <p class="section-tag">Thời gian còn lại</p>
@@ -917,7 +1629,7 @@
                     <strong>Thứ Ba, 19 tháng 5, 2026</strong>
                     <em style="font-size:0.8rem; color:var(--gold);">03/04 Giáp Ngọ</em><br><br>
                     📍 Địa điểm nhà gái<br>
-                    (Vui lòng cập nhật địa chỉ)
+                    19 Bùi Trung Lập, TT. Gio Linh, Gio Linh, Quảng Trị
                 </div>
             </div>
             <div class="event-card reveal">
@@ -928,7 +1640,57 @@
                     <strong>Thứ Tư, 20 tháng 5, 2026</strong>
                     <em style="font-size:0.8rem; color:var(--gold);">04/04 Giáp Ngọ</em><br><br>
                     📍 Địa điểm nhà trai<br>
-                    (Vui lòng cập nhật địa chỉ)
+                    Kiệt 16/10 Trần Phú, Phường 1, Quảng Trị
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ SCHEDULE ═══════════ -->
+    <section id="schedule" class="reveal">
+        <p class="section-tag">Lịch trình</p>
+        <h2 class="section-title">Chương trình <em>ngày cưới</em></h2>
+        <div class="schedule-list">
+            <div class="sch-item reveal"><span class="sch-time">06:00</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">Trang điểm cô dâu</p>
+                    <p class="sch-desc">Ekip make-up chuẩn bị nhan sắc rạng rỡ cho ngày đặc biệt</p>
+                </div>
+            </div>
+            <div class="sch-item reveal"><span class="sch-time">08:00</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">Đón khách & chụp ảnh</p>
+                    <p class="sch-desc">Tiếp đón khách mời và lưu lại những khoảnh khắc đẹp</p>
+                </div>
+            </div>
+            <div class="sch-item reveal"><span class="sch-time">09:30</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">Lễ rước dâu</p>
+                    <p class="sch-desc">Đoàn nhà trai rước cô dâu về nhà chồng trong không khí trang trọng</p>
+                </div>
+            </div>
+            <div class="sch-item reveal"><span class="sch-time">11:00</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">Lễ thành hôn</p>
+                    <p class="sch-desc">Nghi lễ trao nhẫn và lời thề nguyện trước sự chứng kiến của hai gia đình</p>
+                </div>
+            </div>
+            <div class="sch-item reveal"><span class="sch-time">12:00</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">Tiệc trưa gia đình</p>
+                    <p class="sch-desc">Bữa tiệc ấm cúng dành riêng cho hai gia đình</p>
+                </div>
+            </div>
+            <div class="sch-item reveal"><span class="sch-time">18:00</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">🎉 Tiệc cưới chính thức</p>
+                    <p class="sch-desc">Đêm tiệc cưới đáng nhớ với sự tham dự của tất cả bạn bè, người thân</p>
+                </div>
+            </div>
+            <div class="sch-item reveal"><span class="sch-time">21:00</span><span class="sch-dot"></span>
+                <div class="sch-body">
+                    <p class="sch-title">Chia tay & lưu niệm</p>
+                    <p class="sch-desc">Trao quà lưu niệm và tiễn khách ra về</p>
                 </div>
             </div>
         </div>
@@ -1003,26 +1765,138 @@
         </div>
     </section>
 
+    <!-- ═══════════ GALLERY ═══════════ -->
+    <section id="gallery" class="reveal">
+        <p class="section-tag">Ký ức đẹp</p>
+        <h2 class="section-title">Thư viện <em>ảnh cưới</em></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(0)"><img
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Wedding 1"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(1)"><img
+                    src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Wedding 2"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(2)"><img
+                    src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80" alt="Wedding 3"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(3)"><img
+                    src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80" alt="Wedding 4"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(4)"><img
+                    src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80" alt="Wedding 5"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(5)"><img
+                    src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&q=80" alt="Wedding 6"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(6)"><img
+                    src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80" alt="Wedding 7"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(7)"><img
+                    src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=600&q=80" alt="Wedding 8"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(8)"><img
+                    src="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?w=600&q=80" alt="Wedding 9"
+                    loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <button id="lb-close" onclick="closeLightbox()">&#x2715;</button>
+        <button id="lb-prev" onclick="lbNav(-1)">&#8249;</button>
+        <img id="lb-img" src="" alt="">
+        <button id="lb-next" onclick="lbNav(1)">&#8250;</button>
+    </div>
+
     <!-- ═══════════ RSVP ═══════════ -->
     <section id="rsvp" class="reveal">
-        <p class="section-tag">Xác nhận tham dự</p>
+        <p class="section-tag">Xác nhận tham dự & Lưu bút</p>
         <h2 class="section-title">Hãy đến chung <em>vui</em> cùng chúng tôi</h2>
         <p class="rsvp-note">Vui lòng xác nhận trước ngày 05/05/2026</p>
-        <form class="rsvp-form" onsubmit="submitRSVP(event)">
-            <input type="text" placeholder="Họ và tên của bạn *" required />
-            <input type="tel" placeholder="Số điện thoại" />
-            <select required>
+        <form class="rsvp-form" id="rsvpForm" onsubmit="submitRSVP(event)">
+            <input type="text" name="name" placeholder="Họ và tên của bạn *" required />
+            <input type="tel" name="phone" placeholder="Số điện thoại" />
+            <select name="event" required>
                 <option value="" disabled selected>Bạn tham dự buổi nào?</option>
-                <option value="both">Cả hai ngày (19 & 20/05)</option>
-                <option value="female">Lễ nhà nữ — 19/05/2026</option>
-                <option value="male">Lễ nhà nam — 20/05/2026</option>
+                <option value="Cả hai ngày (19 & 20/05)">Cả hai ngày (19 & 20/05)</option>
+                <option value="Lễ nhà nữ — 19/05/2026">Lễ nhà nữ — 19/05/2026</option>
+                <option value="Lễ nhà nam — 20/05/2026">Lễ nhà nam — 20/05/2026</option>
             </select>
-            <input type="number" min="1" max="10" placeholder="Số lượng khách (bao gồm bạn)" />
-            <textarea placeholder="Lời chúc gửi đến đôi uyên ương..."></textarea>
+            <input type="number" name="guests" min="1" max="10" placeholder="Số lượng khách (bao gồm bạn)" />
+            <textarea name="message" placeholder="Lời chúc gửi đến đôi uyên ương..."></textarea>
             <button type="submit" class="btn-rsvp">Gửi xác nhận</button>
         </form>
         <p class="rsvp-success" id="rsvpSuccess">💐 Cảm ơn bạn rất nhiều! Chúng tôi mong được gặp bạn trong ngày vui.
         </p>
+    </section>
+
+    <!-- ═══════════ GUESTBOOK ═══════════ -->
+    <!-- <section id="guestbook" class="reveal">
+        <p class="section-tag">Lưu bút</p>
+        <h2 class="section-title">Gửi lời <em>chúc mừng</em></h2>
+        <div class="gb-form">
+            <input type="text" id="gb-name" placeholder="Tên của bạn *">
+            <textarea id="gb-msg" placeholder="Lời chúc từ trái tim..."></textarea>
+            <button class="btn-gb" onclick="submitGuestbook()">Gửi lời chúc ♥</button>
+        </div>
+        <div class="gb-list" id="gb-list"></div>
+    </section> -->
+
+    <!-- ═══════════ GIFT ═══════════ -->
+    <section id="gift" class="reveal">
+        <p class="section-tag">Mừng cưới</p>
+        <h2 class="section-title">Gửi chút <em>tâm lòng</em></h2>
+        <div class="gift-grid">
+            <div class="bank-card">
+                <p class="bank-name">Ngân hàng Vietcombank</p>
+                <p class="bank-holder">Lê Quốc Cường</p>
+                <p class="bank-num" id="bank-num-1">1234 5678 9012</p>
+                <button class="btn-copy" onclick="copyBank('bank-num-1', this)">Sao chép số TK</button>
+                <p class="bank-name" style="margin-top:1.5rem">Ngân hàng Techcombank</p>
+                <p class="bank-holder">Kim Chi</p>
+                <p class="bank-num" id="bank-num-2">9876 5432 1098</p>
+                <button class="btn-copy" onclick="copyBank('bank-num-2', this)">Sao chép số TK</button>
+            </div>
+            <div class="qr-box">
+                <p class="qr-label">QR Code — Trang Wedding</p>
+                <div id="qrcode"></div>
+                <p class="qr-hint">Quét để chia sẻ trang cưới của chúng tôi! ♥</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ MAPS ═══════════ -->
+    <section id="maps" class="reveal">
+        <p class="section-tag">Địa điểm</p>
+        <h2 class="section-title">Tìm đường đến với <em>chúng tôi</em></h2>
+        <div class="maps-grid">
+            <div class="map-card reveal">
+                <div class="map-label">
+                    <p class="map-tag">Lễ vu quy — 19/05/2026</p>
+                    <p class="map-name">Nhà Gái — Kim Chi</p>
+                    <p class="map-addr">19 Bùi Trung Lập, TT. Gio Linh, Gio Linh, Quảng Trị</p>
+                </div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3816.962931918496!2d107.0840044!3d16.9271206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3140e81bda4be02d%3A0x1718d31613e2659e!2zMTkgQsO5aSBUcnVuZyBM4bqtcCwgVFQuIEdpbyBMaW5oLCBHaW8gTGluaCwgUXXhuqNuZyBUcuG7iywgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1772177813960!5m2!1sen!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a class="map-btn" href="https://maps.app.goo.gl/H5wom76WHkvfAutd9" target="_blank">Chỉ đường
+                    ↗</a>
+            </div>
+            <div class="map-card reveal">
+                <div class="map-label">
+                    <p class="map-tag">Lễ thành hôn — 20/05/2026</p>
+                    <p class="map-name">Nhà Trai — Quốc Cường</p>
+                    <p class="map-addr">Kiệt 16/10 Trần Phú, Phường 1, Quảng Trị</p>
+                </div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d238.79267805050554!2d107.18761974880056!3d16.742669089587785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1772180663820!5m2!1sen!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a class="map-btn" href="https://maps.app.goo.gl/FZmm4oinGNamh3uTA" target="_blank">Chỉ đường
+                    ↗</a>
+            </div>
+        </div>
     </section>
 
     <!-- ═══════════ FOOTER ═══════════ -->
@@ -1105,10 +1979,63 @@
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
         // ─── RSVP submit
-        function submitRSVP(e) {
+        async function submitRSVP(e) {
             e.preventDefault();
-            e.target.style.display = 'none';
-            document.getElementById('rsvpSuccess').style.display = 'block';
+            const form = e.target;
+            const btn = form.querySelector('.btn-rsvp');
+            const originalBtnText = btn.textContent;
+            const successMsg = document.getElementById('rsvpSuccess');
+
+            // Thu thập dữ liệu từ Form
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone') || 'Không có',
+                event: formData.get('event'),
+                guests: formData.get('guests') || 1,
+                message: formData.get('message') || 'Không có',
+                timestamp: new Date().toLocaleString('vi-VN')
+            };
+
+            // Thay đổi trạng thái nút
+            btn.disabled = true;
+            btn.textContent = 'Đang gửi...';
+
+            try {
+                // URL Google Apps Script (Sẽ dán vào đây sau khi thiết lập)
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbyLBGeYor7Q24cPztdaqSNCPUd03e2I3zYZ1VnAtsDvrcqEQPLQ7sXEVJz7DI5jdcJ4/exec'; // Dán Web App URL của Google Script vào đây
+
+                if (scriptURL) {
+                    // Chuyển dữ liệu sang định dạng Form-encoded để Google Script nhận diện tốt nhất
+                    const params = new URLSearchParams();
+                    for (const key in data) {
+                        params.append(key, data[key]);
+                    }
+
+                    await fetch(scriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: params.toString()
+                    });
+                    console.log('Đã gửi dữ liệu (Form-encoded) đến Google Script:', data);
+                } else {
+                    console.log('Dữ liệu RSVP (Chưa có URL):', data);
+                }
+
+                // Hiển thị thành công
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } catch (error) {
+                console.error('Lỗi RSVP:', error);
+                alert('Có lỗi xảy ra khi gửi xác nhận. Bạn vui lòng thử lại hoặc nhắn tin trực tiếp cho chúng mình nhé!');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalBtnText;
+            }
         }
     </script>
 
@@ -1166,6 +2093,8 @@
             const overlay = document.getElementById('welcome-overlay');
             overlay.classList.add('hide');
             setTimeout(() => overlay.style.display = 'none', 850);
+            // Mở lại scroll khi vào trang
+            document.body.style.overflow = '';
 
             // Bật tiếng ngay khi user click (đây là user interaction hợp lệ)
             if (playerReady) {
@@ -1174,6 +2103,8 @@
                 if (!isPlaying) ytPlayer.playVideo();
             }
         }
+        // Tắt scroll khi overlay đang hiển thị
+        document.body.style.overflow = 'hidden';
 
         function onPlayerError(event) {
             console.warn('YouTube player error:', event.data);
@@ -1203,6 +2134,98 @@
         setTimeout(() => {
             document.getElementById('music-player').classList.add('loaded');
         }, 3000);
+
+        // ─── [9] Dark Mode
+        function toggleDark() {
+            document.body.classList.toggle('dark');
+            const btn = document.getElementById('dark-toggle');
+            btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+            localStorage.setItem('wedding-dark', document.body.classList.contains('dark') ? '1' : '0');
+        }
+        if (localStorage.getItem('wedding-dark') === '1') {
+            document.body.classList.add('dark');
+            document.getElementById('dark-toggle').textContent = '☀️';
+        }
+
+        // ─── [8] Cursor Hearts
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.85) {
+                const h = document.createElement('div');
+                h.className = 'cursor-heart';
+                h.textContent = ['❤', '🌸', '✨'][Math.floor(Math.random() * 3)];
+                h.style.left = e.clientX + 'px';
+                h.style.top = e.clientY + 'px';
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 1000);
+            }
+        });
+
+        // ─── [1] Lightbox Gallery
+        const galleryImgs = [...document.querySelectorAll('.gallery-item img')].map(i => i.src);
+        let lbIndex = 0;
+        function openLightbox(idx) {
+            lbIndex = idx;
+            document.getElementById('lb-img').src = galleryImgs[idx];
+            document.getElementById('lightbox').classList.add('open');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+        }
+        function lbNav(dir) {
+            lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length;
+            document.getElementById('lb-img').src = galleryImgs[lbIndex];
+        }
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('open')) return;
+            if (e.key === 'ArrowRight') lbNav(1);
+            if (e.key === 'ArrowLeft') lbNav(-1);
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ─── [3] Guestbook
+        function loadGuestbook() {
+            const entries = JSON.parse(localStorage.getItem('wedding-gb') || '[]');
+            const list = document.getElementById('gb-list');
+            list.innerHTML = entries.map(e => `
+                <div class="gb-entry">
+                    <p class="gb-entry-name">${e.name} ♥</p>
+                    <p class="gb-entry-msg">"${e.msg}"</p>
+                    <p class="gb-entry-date">${e.date}</p>
+                </div>`).join('');
+        }
+        function submitGuestbook() {
+            const name = document.getElementById('gb-name').value.trim();
+            const msg = document.getElementById('gb-msg').value.trim();
+            if (!name || !msg) return alert('Vui lòng nhập tên và lời chúc!');
+            const entries = JSON.parse(localStorage.getItem('wedding-gb') || '[]');
+            entries.unshift({ name, msg, date: new Date().toLocaleDateString('vi-VN') });
+            localStorage.setItem('wedding-gb', JSON.stringify(entries.slice(0, 30)));
+            document.getElementById('gb-name').value = '';
+            document.getElementById('gb-msg').value = '';
+            loadGuestbook();
+        }
+        loadGuestbook();
+
+        // ─── [7] Copy Bank Account
+        function copyBank(id, btn) {
+            const num = document.getElementById(id).textContent.replace(/\s/g, '');
+            navigator.clipboard.writeText(num).then(() => {
+                const orig = btn.textContent;
+                btn.textContent = '✓ Đã sao chép!';
+                setTimeout(() => btn.textContent = orig, 2000);
+            });
+        }
+
+        // ─── [10] QR Code
+        (function () {
+            const url = window.location.href.split('?')[0];
+            QRCode.toCanvas(document.createElement('canvas'), url, { width: 150, margin: 1, color: { dark: '#3a2a2a' } }, (err, canvas) => {
+                if (!err) document.getElementById('qrcode').appendChild(canvas);
+            });
+        })();
     </script>
 </body>
 
