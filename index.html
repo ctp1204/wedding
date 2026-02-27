@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Quốc Cường & Kim Chi — Wedding Day</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --rose: #e8a0a0;
+            --rose-deep: #c96c6c;
+            --gold: #c9a84c;
+            --gold-light: #e8d5a3;
+            --cream: #fdf6ee;
+            --warm-white: #fffaf5;
+            --text-dark: #3a2a2a;
+            --text-mid: #6b4c4c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--warm-white);
+            color: var(--text-dark);
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 40%, #fce4ec 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 60%, #fff3e0 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 90%, #fce4ec55 0%, transparent 40%),
+                var(--warm-white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, var(--gold-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.18;
+        }
+
+        .petals {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            border-radius: 50% 0 50% 0;
+            opacity: 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeUp 1.4s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wedding-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 1.4s 0.2s ease both;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 9vw, 6.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--text-dark);
+            animation: fadeUp 1.4s 0.4s ease both;
+        }
+
+        .couple-names .amp {
+            font-style: italic;
+            color: var(--rose-deep);
+            font-size: 0.85em;
+            display: block;
+            margin: 0.1em 0;
+        }
+
+        .divider-gold {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1.8rem auto;
+            animation: fadeUp 1.4s 0.6s ease both;
+        }
+
+        .hero-date {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.85rem, 2vw, 1.05rem);
+            letter-spacing: 0.25em;
+            color: var(--text-mid);
+            animation: fadeUp 1.4s 0.8s ease both;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(6px);
+            }
+        }
+
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        /* ─── SECTION COMMON ─── */
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.45em;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+
+        /* ─── COUNTDOWN ─── */
+        #countdown {
+            background: linear-gradient(135deg, #fce4ec22, #fff3e033);
+            border-radius: 2px;
+            padding: 5rem 2rem;
+            text-align: center;
+            border: 1px solid #e8a0a033;
+            max-width: 100%;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 4vw, 3rem);
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .count-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+
+        .count-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 300;
+            color: var(--rose-deep);
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        .count-box:hover .count-num {
+            transform: scale(1.08);
+        }
+
+        .count-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            margin-top: 0.4rem;
+        }
+
+        .count-sep {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--gold-light);
+            align-self: center;
+            line-height: 1;
+            padding-bottom: 0.5rem;
+        }
+
+        /* ─── EVENT INFO ─── */
+        .event-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media(max-width: 580px) {
+            .event-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .event-card {
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--gold-light);
+            background: var(--cream);
+            border-radius: 2px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px #c9a84c22;
+        }
+
+        .event-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-type {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .event-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .event-detail {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: var(--text-mid);
+        }
+
+        .event-detail strong {
+            display: block;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        /* ─── STORY ─── */
+        #story {
+            max-width: 960px;
+        }
+
+        .story-timeline {
+            margin-top: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .story-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .story-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--rose-deep);
+            border: 3px solid var(--warm-white);
+            box-shadow: 0 0 0 3px var(--rose), 0 0 16px rgba(201, 100, 100, 0.3);
+            z-index: 2;
+        }
+
+        /* Phần TEXT bên trái */
+        .story-text {
+            padding: 2rem 2rem 2rem 1.5rem;
+            border-right: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        .story-year {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            color: var(--warm-white);
+            background: var(--rose-deep);
+            padding: 0.25em 0.9em;
+            border-radius: 20px;
+            margin-bottom: 0.9rem;
+        }
+
+        .story-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .story-body {
+            font-size: 0.88rem;
+            line-height: 1.85;
+            color: var(--text-mid);
+        }
+
+        /* Phần ẢNH bên phải */
+        .story-photo {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .story-photo:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+        }
+
+        .story-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .story-photo:hover img {
+            transform: scale(1.06);
+        }
+
+        .story-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, rgba(180, 80, 80, 0.08) 100%);
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media(max-width: 640px) {
+            .story-item {
+                grid-template-columns: 1fr;
+            }
+
+            .story-item::after {
+                display: none;
+            }
+
+            .story-text {
+                border-right: none;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+                padding: 1.2rem;
+            }
+        }
+
+        /* ─── RSVP ─── */
+        #rsvp {
+            background: linear-gradient(135deg, #3a2a2a, #5a3535);
+            max-width: 100%;
+            padding: 5rem 2rem;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        #rsvp .section-tag {
+            color: var(--gold-light);
+        }
+
+        #rsvp .section-title {
+            color: var(--cream);
+        }
+
+        #rsvp .section-title em {
+            color: var(--rose);
+        }
+
+        .rsvp-note {
+            margin-top: 0.8rem;
+            font-size: 0.88rem;
+            color: var(--gold-light);
+            letter-spacing: 0.05em;
+            margin-bottom: 2.5rem;
+        }
+
+        .rsvp-form {
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .rsvp-form input,
+        .rsvp-form select,
+        .rsvp-form textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            color: var(--cream);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            border-radius: 2px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .rsvp-form input::placeholder,
+        .rsvp-form textarea::placeholder {
+            color: rgba(253, 246, 238, 0.4);
+        }
+
+        .rsvp-form input:focus,
+        .rsvp-form select:focus,
+        .rsvp-form textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .rsvp-form select option {
+            background: #3a2a2a;
+            color: var(--cream);
+        }
+
+        .rsvp-form textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .btn-rsvp {
+            margin-top: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-rsvp:hover {
+            background: var(--gold);
+            color: #3a2a2a;
+        }
+
+        .rsvp-success {
+            display: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-top: 1rem;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-mid);
+            border-top: 1px solid var(--gold-light);
+        }
+
+        footer span {
+            color: var(--rose-deep);
+        }
+
+        /* ─── REVEAL ANIMATION ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── WELCOME OVERLAY ─── */
+        #welcome-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: radial-gradient(ellipse at 30% 40%, #fce4ec 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 60%, #fff3e0 0%, transparent 50%),
+                var(--warm-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        #welcome-overlay.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #welcome-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, var(--gold-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.15;
+        }
+
+        .welcome-inner {
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 1.2s ease both;
+        }
+
+        .welcome-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.5em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .welcome-names .amp {
+            font-style: italic;
+            color: var(--rose-deep);
+            font-size: 0.8em;
+            display: block;
+            margin: 0.1em 0;
+        }
+
+        .welcome-divider {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1.8rem auto;
+        }
+
+        .welcome-date {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            letter-spacing: 0.3em;
+            color: var(--text-mid);
+            margin-bottom: 2.5rem;
+        }
+
+        #enter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2.4rem;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.35s ease;
+            animation: fadeUp 1.2s 0.5s ease both;
+            opacity: 0;
+        }
+
+        #enter-btn:hover {
+            background: var(--gold);
+            color: #fff;
+            transform: scale(1.04);
+            box-shadow: 0 6px 24px rgba(201, 168, 76, 0.3);
+        }
+
+        #enter-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            transition: transform 0.3s;
+        }
+
+        #enter-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        .music-hint {
+            margin-top: 1.2rem;
+            font-size: 0.72rem;
+            color: var(--text-mid);
+            opacity: 0.6;
+            animation: fadeUp 1.2s 0.8s ease both;
+            letter-spacing: 0.05em;
+        }
+
+        /* ─── MUSIC PLAYER ─── */
+        #music-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(58, 42, 42, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            border-radius: 50px;
+            padding: 0.55rem 1.1rem 0.55rem 0.55rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            animation: fadeUp 1s 1.5s ease both;
+            opacity: 0;
+        }
+
+        #music-player.loaded {
+            opacity: 1;
+        }
+
+        #music-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-deep), var(--gold));
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+        }
+
+        #music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.45);
+        }
+
+        #music-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .music-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: var(--gold-light);
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .music-artist {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.65rem;
+            color: rgba(253, 246, 238, 0.5);
+            letter-spacing: 0.05em;
+        }
+
+        .music-note {
+            font-size: 1rem;
+            animation: spin-slow 4s linear infinite;
+            display: inline-block;
+            color: var(--gold-light);
+        }
+
+        .music-note.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Ẩn iframe YouTube */
+        #yt-player-wrap {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- WELCOME OVERLAY -->
+    <div id="welcome-overlay">
+        <div class="welcome-inner">
+            <p class="welcome-tag">Trân trọng kính mời</p>
+            <h1 class="welcome-names">
+                Quốc Cường
+                <span class="amp">&</span>
+                Kim Chi
+            </h1>
+            <div class="welcome-divider"></div>
+            <p class="welcome-date">19 · 05 · 2026 &nbsp;—&nbsp; 20 · 05 · 2026</p>
+            <button id="enter-btn" onclick="enterSite()">
+                Chứng kiến tình yêu
+                <svg viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </button>
+            <p class="music-hint">Một câu chuyện tình yêu đẹp đang chờ bạn...</p>
+        </div>
+    </div>
+
+    <!-- PETALS -->
+    <div class="petals" id="petals"></div>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <div class="hero">
+        <div class="hero-inner">
+            <p class="wedding-label">Trân trọng kính mời</p>
+            <h1 class="couple-names">
+                Quốc Cường
+                <span class="amp">&amp;</span>
+                Kim Chi
+            </h1>
+            <div class="divider-gold"></div>
+            <p class="hero-date">19 · 05 · 2026 &nbsp;—&nbsp; 20 · 05 · 2026</p>
+        </div>
+        <div class="scroll-hint">Cuộn xuống</div>
+    </div>
+
+    <!-- ═══════════ COUNTDOWN ═══════════ -->
+    <section id="countdown" class="reveal">
+        <p class="section-tag">Thời gian còn lại</p>
+        <h2 class="section-title">Đếm ngược đến <em>ngày trọng đại</em></h2>
+        <div class="countdown-grid">
+            <div class="count-box">
+                <div class="count-num" id="days">00</div>
+                <div class="count-label">Ngày</div>
+            </div>
+            <div class="count-sep">·</div>
+            <div class="count-box">
+                <div class="count-num" id="hours">00</div>
+                <div class="count-label">Giờ</div>
+            </div>
+            <div class="count-sep">·</div>
+            <div class="count-box">
+                <div class="count-num" id="minutes">00</div>
+                <div class="count-label">Phút</div>
+            </div>
+            <div class="count-sep">·</div>
+            <div class="count-box">
+                <div class="count-num" id="seconds">00</div>
+                <div class="count-label">Giây</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ EVENT INFO ═══════════ -->
+    <section id="event" class="reveal">
+        <p class="section-tag">Chương trình lễ cưới</p>
+        <h2 class="section-title">Thông tin <em>Hôn Lễ</em></h2>
+        <div class="event-cards">
+            <div class="event-card reveal">
+                <div class="event-icon">🌸</div>
+                <div class="event-type">Lễ Nhà Nữ</div>
+                <div class="event-name">Nhà Cô Dâu</div>
+                <div class="event-detail">
+                    <strong>Thứ Ba, 19 tháng 5, 2026</strong>
+                    <em style="font-size:0.8rem; color:var(--gold);">03/04 Giáp Ngọ</em><br><br>
+                    📍 Địa điểm nhà gái<br>
+                    (Vui lòng cập nhật địa chỉ)
+                </div>
+            </div>
+            <div class="event-card reveal">
+                <div class="event-icon">🥂</div>
+                <div class="event-type">Lễ Nhà Nam & Tiệc Cưới</div>
+                <div class="event-name">Nhà Chú Rể</div>
+                <div class="event-detail">
+                    <strong>Thứ Tư, 20 tháng 5, 2026</strong>
+                    <em style="font-size:0.8rem; color:var(--gold);">04/04 Giáp Ngọ</em><br><br>
+                    📍 Địa điểm nhà trai<br>
+                    (Vui lòng cập nhật địa chỉ)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ STORY ═══════════ -->
+    <section id="story" class="reveal">
+        <p class="section-tag">Hành trình tình yêu</p>
+        <h2 class="section-title">Câu chuyện <em>Của Chúng Tôi</em></h2>
+        <div class="story-timeline">
+
+            <!-- 2019: Lần đầu gặp gỡ -->
+            <div class="story-item reveal">
+                <div class="story-text">
+                    <div class="story-year">2019</div>
+                    <div class="story-heading">Lần đầu gặp gỡ</div>
+                    <p class="story-body">Chúng tôi gặp nhau tại một buổi tiệc của bạn chung — một ánh mắt tình cờ, một
+                        nụ cười e thẹn, và từ đó thế giới của hai người mãi mãi thay đổi.</p>
+                </div>
+                <div class="story-photo">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
+                        alt="Lần đầu gặp gỡ 2019" loading="lazy">
+                    <div class="story-photo-overlay"></div>
+                </div>
+            </div>
+
+            <!-- 2020: Buổi hẹn hò đầu tiên -->
+            <div class="story-item reveal">
+                <div class="story-text">
+                    <div class="story-year">2020</div>
+                    <div class="story-heading">Buổi hẹn hò đầu tiên</div>
+                    <p class="story-body">Một buổi chiều dạo phố, ly cà phê bên nhau, và những câu chuyện không bao giờ
+                        dứt. Chúng tôi biết đây là điều thật đặc biệt.</p>
+                </div>
+                <div class="story-photo">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80"
+                        alt="Buổi hẹn hò đầu tiên 2020" loading="lazy">
+                    <div class="story-photo-overlay"></div>
+                </div>
+            </div>
+
+            <!-- 2022: Chính thức thuộc về nhau -->
+            <div class="story-item reveal">
+                <div class="story-text">
+                    <div class="story-year">2022</div>
+                    <div class="story-heading">Chính thức thuộc về nhau</div>
+                    <p class="story-body">Tay trong tay vượt qua những thăng trầm, chúng tôi hiểu rằng bên nhau chính là
+                        nơi chúng tôi thuộc về.</p>
+                </div>
+                <div class="story-photo">
+                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80"
+                        alt="Chính thức thuộc về nhau 2022" loading="lazy">
+                    <div class="story-photo-overlay"></div>
+                </div>
+            </div>
+
+            <!-- 2024: Lời cầu hôn -->
+            <div class="story-item reveal">
+                <div class="story-text">
+                    <div class="story-year">2024</div>
+                    <div class="story-heading">Lời cầu hôn</div>
+                    <p class="story-body">Dưới bầu trời đầy sao, Quốc Cường quỳ gối và hỏi: "Em có muốn cùng anh bước
+                        qua phần còn lại của cuộc đời không?" — Câu trả lời là "Có".</p>
+                </div>
+                <div class="story-photo">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80"
+                        alt="Lời cầu hôn 2024" loading="lazy">
+                    <div class="story-photo-overlay"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════ RSVP ═══════════ -->
+    <section id="rsvp" class="reveal">
+        <p class="section-tag">Xác nhận tham dự</p>
+        <h2 class="section-title">Hãy đến chung <em>vui</em> cùng chúng tôi</h2>
+        <p class="rsvp-note">Vui lòng xác nhận trước ngày 05/05/2026</p>
+        <form class="rsvp-form" onsubmit="submitRSVP(event)">
+            <input type="text" placeholder="Họ và tên của bạn *" required />
+            <input type="tel" placeholder="Số điện thoại" />
+            <select required>
+                <option value="" disabled selected>Bạn tham dự buổi nào?</option>
+                <option value="both">Cả hai ngày (19 & 20/05)</option>
+                <option value="female">Lễ nhà nữ — 19/05/2026</option>
+                <option value="male">Lễ nhà nam — 20/05/2026</option>
+            </select>
+            <input type="number" min="1" max="10" placeholder="Số lượng khách (bao gồm bạn)" />
+            <textarea placeholder="Lời chúc gửi đến đôi uyên ương..."></textarea>
+            <button type="submit" class="btn-rsvp">Gửi xác nhận</button>
+        </form>
+        <p class="rsvp-success" id="rsvpSuccess">💐 Cảm ơn bạn rất nhiều! Chúng tôi mong được gặp bạn trong ngày vui.
+        </p>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer>
+        <p>Quốc Cường <span>♥</span> Kim Chi · 19 — 20.05.2026</p>
+        <p style="font-size:0.8rem; margin-top:0.5rem; font-style:normal; letter-spacing:0.1em; color: var(--gold);">
+            Cùng nhau mãi mãi</p>
+    </footer>
+
+    <!-- ═══════════ MUSIC PLAYER ═══════════ -->
+    <div id="music-player">
+        <button id="music-btn" title="Phát / Dừng nhạc" onclick="toggleMusic()">
+            <!-- Play icon -->
+            <svg id="icon-play" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            <!-- Pause icon (hidden by default) -->
+            <svg id="icon-pause" viewBox="0 0 24 24" style="display:none">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+        </button>
+        <span class="music-note" id="music-note">♪</span>
+        <div class="music-info">
+            <span class="music-title">50 Năm Về Sau</span>
+            <span class="music-artist">Đặng Thanh Tuyền</span>
+        </div>
+    </div>
+
+    <!-- YouTube iframe ẩn -->
+    <div id="yt-player-wrap">
+        <div id="yt-player"></div>
+    </div>
+
+    <script>
+        // ─── Petals
+        const colors = ['#e8a0a0', '#f7c5c5', '#c9a84c', '#f8e0d0', '#f4b8b8'];
+        const container = document.getElementById('petals');
+        for (let i = 0; i < 22; i++) {
+            const p = document.createElement('div');
+            p.classList.add('petal');
+            p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      width: ${6 + Math.random() * 6}px;
+      height: ${8 + Math.random() * 8}px;
+      animation-duration: ${6 + Math.random() * 8}s;
+      animation-delay: ${Math.random() * 8}s;
+      border-radius: ${Math.random() > 0.5 ? '50% 0' : '0 50%'} 50% 0;
+    `;
+            container.appendChild(p);
+        }
+
+        // ─── Countdown — đếm đến lễ nhà nữ 19/05/2026
+        const wedding = new Date('2026-05-19T07:00:00');
+        function tick() {
+            const now = new Date();
+            const diff = wedding - now;
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+            document.getElementById('days').textContent = String(d).padStart(2, '0');
+            document.getElementById('hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+        }
+        tick(); setInterval(tick, 1000);
+
+        // ─── Scroll reveal
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // ─── RSVP submit
+        function submitRSVP(e) {
+            e.preventDefault();
+            e.target.style.display = 'none';
+            document.getElementById('rsvpSuccess').style.display = 'block';
+        }
+    </script>
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // Video ID: "50 Năm Về Sau" - từ link người dùng cung cấp
+        const SONG_VIDEO_ID = 'xFONPDwW-lU';
+        let ytPlayer;
+        let isPlaying = false;
+        let playerReady = false;
+
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-player', {
+                height: '1',
+                width: '1',
+                videoId: SONG_VIDEO_ID,
+                playerVars: {
+                    autoplay: 1,   // bật autoplay
+                    mute: 1,       // muted để bypass browser policy
+                    controls: 0,
+                    loop: 1,
+                    playlist: SONG_VIDEO_ID,
+                    rel: 0,
+                    modestbranding: 1,
+                    playsinline: 1,
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange,
+                    onError: onPlayerError,
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            playerReady = true;
+            document.getElementById('music-player').classList.add('loaded');
+            // Phát muted sẵn, âm thanh sẽ bật khi user click overlay
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                updateUI(true);
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                isPlaying = false;
+                updateUI(false);
+            }
+        }
+
+        // Hàm vào trang: ẩn overlay + bật tiếng nhạc
+        function enterSite() {
+            const overlay = document.getElementById('welcome-overlay');
+            overlay.classList.add('hide');
+            setTimeout(() => overlay.style.display = 'none', 850);
+
+            // Bật tiếng ngay khi user click (đây là user interaction hợp lệ)
+            if (playerReady) {
+                ytPlayer.unMute();
+                ytPlayer.setVolume(60);
+                if (!isPlaying) ytPlayer.playVideo();
+            }
+        }
+
+        function onPlayerError(event) {
+            console.warn('YouTube player error:', event.data);
+            document.getElementById('music-player').classList.add('loaded');
+        }
+
+        function updateUI(playing) {
+            document.getElementById('icon-play').style.display = playing ? 'none' : 'block';
+            document.getElementById('icon-pause').style.display = playing ? 'block' : 'none';
+            const note = document.getElementById('music-note');
+            if (playing) note.classList.remove('paused');
+            else note.classList.add('paused');
+        }
+
+        function toggleMusic() {
+            if (!playerReady) return;
+            if (isPlaying) {
+                ytPlayer.pauseVideo();
+            } else {
+                ytPlayer.unMute();
+                ytPlayer.setVolume(60);
+                ytPlayer.playVideo();
+            }
+        }
+
+        // Fallback hiển thị player sau 3s
+        setTimeout(() => {
+            document.getElementById('music-player').classList.add('loaded');
+        }, 3000);
+    </script>
+</body>
+
+</html>
