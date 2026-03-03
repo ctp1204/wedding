@@ -4,7 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lê Quốc Cường & Kim Chi — Wedding Day</title>
+    <title>Lê Quốc Cường & Kim Chi — Wedding Day 🌸</title>
+    <meta name="description"
+        content="Trân trọng kính mời bạn tham dự lễ cưới của Quốc Cường & Kim Chi — ngày 19 & 20 tháng 5 năm 2026 tại Quảng Trị.">
+    <!-- Warm-up kết nối sớm đến Apps Script để giảm delay fetchVoteTotals -->
+    <link rel="preconnect" href="https://script.google.com">
+    <link rel="preconnect" href="https://script.googleusercontent.com">
+
+
+    <!-- Open Graph / Facebook / Zalo -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="💍 Đám cưới Quốc Cường & Kim Chi">
+    <meta property="og:description"
+        content="Trân trọng kính mời bạn tham dự lễ cưới của chúng mình — 19 & 20/05/2026 tại Quảng Trị 🌸">
+    <meta property="og:image"
+        content="https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/639632324_3055935174796348_3284999476177740146_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHU4m5RSxXKCJmfzxgM2K4VkuohSD6pHF2S6iFIPqkcXTB_BiwwIsbSX1Nr_zENP38QzZNrEksIu-MDRlIslEW0&_nc_ohc=khO2GmBKM4IQ7kNvwHaqTsH&_nc_oc=AdlFyF8Gvibewae3ocUi-_BqQHG_h1JrHbVlX2t2X4bbnK45RVDSUQIdwjnUDt7bqao&_nc_zt=23&_nc_ht=scontent.fdad5-1.fna&_nc_gid=HI2_QZOpluO1kXSz9Ad9Bg&oh=00_AfumOSP9vdSOqM1ug_8gZqzupkHRNweJq7kVPiFT0qNXUw&oe=69A73F92">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="vi_VN">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap"
         rel="stylesheet">
@@ -963,6 +988,256 @@
             color: var(--text-mid);
         }
 
+        /* ─── COUPLE VOTE ─── */
+        .couple-vote-section {
+            margin-top: 3.5rem;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.06) 0%, rgba(201, 100, 100, 0.06) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .couple-vote-section::before {
+            content: '♥';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.04;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .vote-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .vote-sublabel {
+            font-size: 0.78rem;
+            color: var(--text-mid);
+            margin-bottom: 2rem;
+            letter-spacing: 0.03em;
+        }
+
+        .vote-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .vote-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Cormorant Garamond', serif;
+            min-width: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vote-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .vote-btn:hover::after {
+            opacity: 1;
+        }
+
+        .vote-groom {
+            background: linear-gradient(135deg, #1a3a6b, #2d5fa6);
+            color: white;
+            box-shadow: 0 8px 24px rgba(29, 74, 168, 0.35);
+        }
+
+        .vote-bride {
+            background: linear-gradient(135deg, #c2185b, #e91e8c);
+            color: white;
+            box-shadow: 0 8px 24px rgba(194, 24, 91, 0.35);
+        }
+
+        .vote-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .vote-btn:active {
+            transform: scale(0.97);
+        }
+
+        .vote-btn.voted-active {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 0 3px var(--gold);
+            outline: 3px solid var(--gold);
+        }
+
+        .vote-groom.voted-active {
+            box-shadow: 0 12px 32px rgba(29, 74, 168, 0.5), 0 0 0 3px #f5d784;
+            outline: 3px solid #f5d784;
+        }
+
+        .vote-bride.voted-active {
+            box-shadow: 0 12px 32px rgba(194, 24, 91, 0.5), 0 0 0 3px #f5d784;
+            outline: 3px solid #f5d784;
+        }
+
+        .vote-btn.voted-inactive {
+            opacity: 0.45;
+            filter: grayscale(50%);
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .vote-btn-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .vote-btn-text {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .vote-btn-name {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        .vote-vs {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            padding: 0.5rem;
+            text-shadow: 0 2px 8px rgba(201, 168, 76, 0.3);
+        }
+
+        .vote-result {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .vote-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .vote-bar-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.1rem;
+            font-size: 0.72rem;
+            min-width: 80px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+        }
+
+        .vote-bar-label.bride-label {
+            text-align: right;
+        }
+
+        .vote-count {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .groom-label .vote-count {
+            color: #2d5fa6;
+        }
+
+        .bride-label .vote-count {
+            color: #c2185b;
+        }
+
+        .vote-bar-track {
+            flex: 1;
+            height: 14px;
+            background: rgba(0, 0, 0, 0.07);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .vote-bar-fill {
+            height: 100%;
+            transition: width 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+
+        .groom-fill {
+            background: linear-gradient(90deg, #1a3a6b, #2d5fa6);
+            border-radius: 8px 0 0 8px;
+        }
+
+        .bride-fill {
+            background: linear-gradient(90deg, #e91e8c, #c2185b);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .vote-total {
+            font-size: 0.75rem;
+            color: var(--text-mid);
+            letter-spacing: 0.08em;
+            margin-top: 0.5rem;
+        }
+
+        .vote-toast {
+            position: relative;
+            margin-top: 1rem;
+            min-height: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--gold);
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .vote-toast.show {
+            opacity: 1;
+        }
+
+        /* Badge "Đã vote" */
+        .vote-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+            font-family: 'Cinzel', serif;
+            position: absolute;
+            top: 0.4rem;
+            right: 0.4rem;
+        }
+
         /* ─── BRIDAL PARTY ─── */
         #bridal-party {
             max-width: 960px;
@@ -1472,10 +1747,274 @@
                 transform: translateY(-60px) scale(0.5);
             }
         }
+
+        /* ─── NAVIGATION BAR ─── */
+        #nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: clamp(0.8rem, 2vw, 1.8rem);
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 248, 242, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+            box-shadow: 0 2px 16px rgba(90, 42, 42, 0.08);
+            transform: translateY(-100%);
+            transition: transform 0.4s ease, background 0.3s;
+            /* Mobile: scroll ngang */
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            /* Ẩn scrollbar nhưng vẫn scroll được */
+            scrollbar-width: none;
+        }
+
+        #nav-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Desktop: căn giữa */
+        @media (min-width: 768px) {
+            #nav-bar {
+                justify-content: center;
+                overflow-x: visible;
+            }
+        }
+
+        #nav-bar.visible {
+            transform: translateY(0);
+        }
+
+        body.dark #nav-bar {
+            background: rgba(20, 10, 10, 0.94);
+            border-bottom-color: rgba(201, 168, 76, 0.3);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-link {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            color: #6b3030;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0.35rem 0.15rem;
+            border-bottom: 1.5px solid transparent;
+            transition: color 0.25s, border-color 0.25s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        body.dark .nav-link {
+            color: #e8c9a0;
+        }
+
+        .nav-link:hover,
+        .nav-link:active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* ─── DRESS CODE SECTION ─── */
+        #dress-code {
+            max-width: 760px;
+            text-align: center;
+        }
+
+        .dress-note {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            margin-top: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .dress-palette {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2.5rem 0 1.2rem;
+        }
+
+        .dress-swatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .swatch-circle {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s;
+        }
+
+        .swatch-circle:hover {
+            transform: scale(1.12);
+        }
+
+        .swatch-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            color: var(--text-mid);
+        }
+
+        .dress-avoid {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.6rem 1.4rem;
+            border: 1px solid #e8a0a066;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--text-mid);
+        }
+
+        .dress-avoid span {
+            color: var(--rose-deep);
+            font-weight: 400;
+        }
+
+        .dress-code-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        @media(max-width: 520px) {
+            .dress-code-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dress-card {
+            padding: 1.5rem;
+            border: 1px solid var(--gold-light);
+            border-radius: 10px;
+            background: var(--cream);
+        }
+
+        .dress-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+
+        .dress-card-text {
+            font-size: 0.84rem;
+            line-height: 1.75;
+            color: var(--text-mid);
+        }
+
+        /* ─── SHARE BUTTON ─── */
+        #share-btn {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--rose-deep));
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: fadeUp 1s 2s ease both;
+            opacity: 0;
+            font-size: 1.1rem;
+        }
+
+        #share-btn.loaded {
+            opacity: 1;
+        }
+
+        #share-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.45);
+        }
+
+        /* ─── BACK TO TOP ─── */
+        #back-top {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 2rem;
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 250, 245, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--gold-light);
+            color: var(--gold);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #back-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #back-top:hover {
+            background: var(--gold);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        body.dark #back-top {
+            background: rgba(26, 16, 16, 0.8);
+        }
+
+        /* ─── COUNTDOWN CELEBRATION ─── */
+        .countdown-celebration {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-style: italic;
+            color: var(--rose-deep);
+            margin-top: 2rem;
+            animation: fadeUp 1s ease both;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- ═══════════ NAVIGATION BAR ═══════════ -->
+    <nav id="nav-bar">
+        <a class="nav-link" href="#couple-intro">Cô dâu & Chú rể</a>
+        <a class="nav-link" href="#event">Hôn lễ</a>
+        <a class="nav-link" href="#schedule">Lịch trình</a>
+        <a class="nav-link" href="#story">Tình yêu</a>
+        <a class="nav-link" href="#gallery">Gallery</a>
+        <a class="nav-link" href="#dress-code">Trang phục</a>
+        <a class="nav-link" href="#rsvp">Lời chúc</a>
+        <a class="nav-link" href="#gift">Mừng cưới</a>
+        <a class="nav-link" href="#maps">Địa điểm</a>
+    </nav>
 
     <!-- WELCOME OVERLAY -->
     <div id="welcome-overlay">
@@ -1517,7 +2056,7 @@
     </div>
 
     <!-- Dark Mode Toggle -->
-    <button id="dark-toggle" onclick="toggleDark()" title="Chuyển giao diện">🌙</button>
+    <!-- <button id="dark-toggle" onclick="toggleDark()" title="Chuyển giao diện">🌙</button> -->
 
     <!-- ═══════════ COUPLE INTRO ═══════════ -->
     <section id="couple-intro" class="reveal">
@@ -1542,6 +2081,46 @@
                 <p class="couple-bio">Cô gái dịu dàng với trái tim rộng lớn, yêu thích những buổi chiều cà phê bên người
                     thương. Cô tin rằng hạnh phúc nằm trong những điều nhỏ bé mỗi ngày.</p>
             </div>
+        </div>
+
+        <!-- ═══════════ COUPLE VOTE ═══════════ -->
+        <div class="couple-vote-section">
+            <p class="vote-label">💬 Bạn đang "Team" nào?</p>
+            <p class="vote-sublabel">Hãy bày tỏ sự ủng hộ của bạn nhé! Mỗi người được chọn một lần thôi 😄</p>
+
+            <div class="vote-buttons">
+                <button class="vote-btn vote-groom" id="vote-groom-btn" onclick="castVote('groom')">
+                    <span class="vote-btn-icon">💙</span>
+                    <span class="vote-btn-text">Team Chú Rể</span>
+                    <span class="vote-btn-name">Quốc Cường</span>
+                </button>
+                <div class="vote-vs">VS</div>
+                <button class="vote-btn vote-bride" id="vote-bride-btn" onclick="castVote('bride')">
+                    <span class="vote-btn-icon">💗</span>
+                    <span class="vote-btn-text">Team Cô Dâu</span>
+                    <span class="vote-btn-name">Kim Chi</span>
+                </button>
+            </div>
+
+            <div class="vote-result" id="vote-result">
+                <div class="vote-bar-row">
+                    <div class="vote-bar-label groom-label">
+                        <span>💙 Quốc Cường</span>
+                        <span class="vote-count" id="groom-count">0</span>
+                    </div>
+                    <div class="vote-bar-track">
+                        <div class="vote-bar-fill groom-fill" id="groom-bar"></div>
+                        <div class="vote-bar-fill bride-fill" id="bride-bar"></div>
+                    </div>
+                    <div class="vote-bar-label bride-label">
+                        <span class="vote-count" id="bride-count">0</span>
+                        <span>Kim Chi 💗</span>
+                    </div>
+                </div>
+                <div class="vote-total" id="vote-total">0 lượt vote</div>
+            </div>
+
+            <div class="vote-toast" id="vote-toast"></div>
         </div>
     </section>
 
@@ -1702,7 +2281,7 @@
         <h2 class="section-title">Câu chuyện <em>Của Chúng Tôi</em></h2>
         <div class="story-timeline">
 
-            <!-- 2019: Lần đầu gặp gỡ -->
+            <!-- 2020: Lần đầu gặp gỡ -->
             <div class="story-item reveal">
                 <div class="story-text">
                     <div class="story-year">2020</div>
@@ -1717,10 +2296,10 @@
                 </div>
             </div>
 
-            <!-- 2020: Buổi hẹn hò đầu tiên -->
+            <!-- 2021: Buổi hẹn hò đầu tiên -->
             <div class="story-item reveal">
                 <div class="story-text">
-                    <div class="story-year">2020</div>
+                    <div class="story-year">2021</div>
                     <div class="story-heading">Buổi hẹn hò đầu tiên</div>
                     <p class="story-body">Một buổi chiều dạo phố, ly cà phê bên nhau, và những câu chuyện không bao giờ
                         dứt. Chúng tôi biết đây là điều thật đặc biệt.</p>
@@ -1741,7 +2320,7 @@
                         nơi chúng tôi thuộc về.</p>
                 </div>
                 <div class="story-photo">
-                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80"
+                    <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/490361116_2737218503334685_377976289779499883_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeE9J64ptCGvE0R4x9bsBkedfXy32kDcMuJ9fLfaQNwy4hdte_M6G4q04cR1Cwu_7Uhto7YKyyXkeloycmQsEdbA&_nc_ohc=Nqj2jaDuc1YQ7kNvwEUauUd&_nc_oc=AdmZGOv9q7USmkDCGEd32rME0En9Ge-XCbKE0hZUwNIe6ocRHFWoaYNAMimvByMC7mA&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=IzLmDNEWu83qTsH4pnk7Gw&oh=00_AfumhhJca65dkStx82v5wQd8onVX6eBQgQuE-kIbh-CKWQ&oe=69A75B44"
                         alt="Chính thức thuộc về nhau 2022" loading="lazy">
                     <div class="story-photo-overlay"></div>
                 </div>
@@ -1808,6 +2387,58 @@
         <button id="lb-next" onclick="lbNav(1)">&#8250;</button>
     </div>
 
+    <!-- ═══════════ DRESS CODE ═══════════ -->
+    <section id="dress-code" class="reveal">
+        <p class="section-tag">Trang phục</p>
+        <h2 class="section-title">Gợi ý <em>trang phục</em> cho khách mời</h2>
+        <p class="dress-note">Chúng mình muốn buổi lễ thêm rực rỡ với tông màu ấm áp.<br>
+            Hãy diện lên mình bộ trang phục đẹp nhất để cùng chia vui nhé! 🌸</p>
+
+        <!-- Bảng màu gợi ý -->
+        <div class="dress-palette">
+            <div class="dress-swatch">
+                <div class="swatch-circle" style="background:#fce4ec;"></div>
+                <span class="swatch-label">Hồng phấn</span>
+            </div>
+            <div class="dress-swatch">
+                <div class="swatch-circle" style="background:#f8e0d0;"></div>
+                <span class="swatch-label">Champagne</span>
+            </div>
+            <div class="dress-swatch">
+                <div class="swatch-circle" style="background:#e8d5a3;"></div>
+                <span class="swatch-label">Vàng nhạt</span>
+            </div>
+            <div class="dress-swatch">
+                <div class="swatch-circle" style="background:#d4e8d4;"></div>
+                <span class="swatch-label">Xanh nhạt</span>
+            </div>
+            <div class="dress-swatch">
+                <div class="swatch-circle" style="background:#e8e0f0;"></div>
+                <span class="swatch-label">Tím lavender</span>
+            </div>
+            <div class="dress-swatch">
+                <div class="swatch-circle" style="background:#b8cce4;"></div>
+                <span class="swatch-label">Xanh trời</span>
+            </div>
+        </div>
+
+        <p class="dress-avoid">⚠ Vui lòng <span>tránh mặc màu trắng</span> — đó là màu dành riêng cho cô dâu nhé ♥</p>
+
+        <!-- Cards gợi ý -->
+        <div class="dress-code-cards">
+            <div class="dress-card reveal">
+                <p class="dress-card-title">🎀 Dành cho khách nữ</p>
+                <p class="dress-card-text">Đầm dài, đầm midi, hoặc áo dài truyền thống đều rất phù hợp. Ưu tiên tông màu
+                    pastel, champagne hoặc các màu sáng ấm áp. Giày cao gót hoặc sandal thanh lịch.</p>
+            </div>
+            <div class="dress-card reveal">
+                <p class="dress-card-title">🤵 Dành cho khách nam</p>
+                <p class="dress-card-text">Suit, vest hoặc áo sơ mi lịch sự kết hợp quần tây. Tông màu navy, xám, be
+                    hoặc trắng sứ đều thanh lịch. Tránh quần jeans và trang phục thể thao.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══════════ RSVP ═══════════ -->
     <section id="rsvp" class="reveal">
         <p class="section-tag">Xác nhận tham dự & Lưu bút</p>
@@ -1853,7 +2484,7 @@
                 <p class="bank-num" id="bank-num-1">1234 5678 9012</p>
                 <button class="btn-copy" onclick="copyBank('bank-num-1', this)">Sao chép số TK</button>
                 <p class="bank-name" style="margin-top:1.5rem">Ngân hàng Techcombank</p>
-                <p class="bank-holder">Kim Chi</p>
+                <p class="bank-holder">Phùng Thị Chi</p>
                 <p class="bank-num" id="bank-num-2">9876 5432 1098</p>
                 <button class="btn-copy" onclick="copyBank('bank-num-2', this)">Sao chép số TK</button>
             </div>
@@ -1907,6 +2538,11 @@
     </footer>
 
     <!-- ═══════════ MUSIC PLAYER ═══════════ -->
+    <!-- Share Button -->
+    <button id="share-btn" onclick="shareWebsite()" title="Chia sẻ trang cưới">🔗</button>
+    <!-- Back to Top -->
+    <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Lên đầu trang">↑</button>
+
     <div id="music-player">
         <button id="music-btn" title="Phát / Dừng nhạc" onclick="toggleMusic()">
             <!-- Play icon -->
@@ -1955,10 +2591,15 @@
             const now = new Date();
             const diff = wedding - now;
             if (diff <= 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
+                // Đếm ngược về 0 — Hiển thị thông điệp mừng ngày đại hỷ
+                const grid = document.querySelector('.countdown-grid');
+                if (!document.querySelector('.countdown-celebration')) {
+                    grid.style.display = 'none';
+                    const msg = document.createElement('p');
+                    msg.className = 'countdown-celebration';
+                    msg.innerHTML = '🎉 Hôm nay là ngày trọng đại của chúng mình! 🎊<br><small style="font-size:0.6em;letter-spacing:.2em;font-family:\'Cinzel\',serif;color:var(--gold)">19 — 20 · 05 · 2026</small>';
+                    grid.parentNode.appendChild(msg);
+                }
                 return;
             }
             const d = Math.floor(diff / 86400000);
@@ -1977,6 +2618,45 @@
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // ─── Nav bar: hiện sau khi scroll qua hero
+        const navBar = document.getElementById('nav-bar');
+        const backTop = document.getElementById('back-top');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > window.innerHeight * 0.6) {
+                navBar.classList.add('visible');
+            } else {
+                navBar.classList.remove('visible');
+            }
+            if (scrollY > 400) {
+                backTop.classList.add('show');
+            } else {
+                backTop.classList.remove('show');
+            }
+        }, { passive: true });
+
+        // ─── Share function
+        function shareWebsite() {
+            const shareData = {
+                title: '💍 Đám cưới Quốc Cường & Kim Chi',
+                text: 'Trân trọng kính mời bạn tham dự lễ cưới của chúng mình — 19 & 20/05/2026 tại Quảng Trị 🌸',
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => { });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    const btn = document.getElementById('share-btn');
+                    const orig = btn.textContent;
+                    btn.textContent = '✓';
+                    setTimeout(() => btn.textContent = orig, 2000);
+                });
+            }
+        }
+        // Hiện share button sau khi loaded
+        setTimeout(() => { document.getElementById('share-btn').classList.add('loaded'); }, 2200);
 
         // ─── RSVP submit
         async function submitRSVP(e) {
@@ -2144,7 +2824,8 @@
         }
         if (localStorage.getItem('wedding-dark') === '1') {
             document.body.classList.add('dark');
-            document.getElementById('dark-toggle').textContent = '☀️';
+            var _dt = document.getElementById('dark-toggle');
+            if (_dt) _dt.textContent = '☀️';
         }
 
         // ─── [8] Cursor Hearts
@@ -2187,8 +2868,9 @@
 
         // ─── [3] Guestbook
         function loadGuestbook() {
-            const entries = JSON.parse(localStorage.getItem('wedding-gb') || '[]');
             const list = document.getElementById('gb-list');
+            if (!list) return;
+            const entries = JSON.parse(localStorage.getItem('wedding-gb') || '[]');
             list.innerHTML = entries.map(e => `
                 <div class="gb-entry">
                     <p class="gb-entry-name">${e.name} ♥</p>
@@ -2209,7 +2891,229 @@
         }
         loadGuestbook();
 
-        // ─── [7] Copy Bank Account
+        // ─── COUPLE VOTE ───
+
+        // Tạo voter ID ẩn danh, lưu localStorage để không vote 2 lần
+        function getVoterId() {
+            var id = localStorage.getItem('wedding-voter-id');
+            if (!id) {
+                id = 'v_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+                localStorage.setItem('wedding-voter-id', id);
+            }
+            return id;
+        }
+
+        var _voteData;
+        try {
+            var _raw = localStorage.getItem('wedding-votes');
+            _voteData = _raw ? JSON.parse(_raw) : null;
+        } catch (e) { _voteData = null; }
+        if (!_voteData || typeof _voteData.groom !== 'number' || typeof _voteData.bride !== 'number') {
+            _voteData = { groom: 0, bride: 0 };
+        }
+
+        var _VOTE_URL = 'https://script.google.com/macros/s/AKfycbyLBGeYor7Q24cPztdaqSNCPUd03e2I3zYZ1VnAtsDvrcqEQPLQ7sXEVJz7DI5jdcJ4/exec';
+
+        // Parse vote data từ text (hỗ trợ JSON và JSONP)
+        function _parseVoteText(text) {
+            try { return JSON.parse(text); } catch (e) { }
+            var m = text.match(/\{"groom"\s*:\s*(\d+)\s*,\s*"bride"\s*:\s*(\d+)\s*\}/);
+            if (m) return { groom: parseInt(m[1]), bride: parseInt(m[2]) };
+            return null;
+        }
+
+        // JSONP fallback
+        function _fetchVoteJSONP() {
+            console.log('[Vote] Thử JSONP fallback...');
+            var cb = '_vj_' + Date.now();
+            var s = document.createElement('script');
+            var timer = setTimeout(function () {
+                console.warn('[Vote] JSONP timeout sau 5s');
+                delete window[cb];
+                if (s.parentNode) s.parentNode.removeChild(s);
+            }, 5000);
+            window[cb] = function (data) {
+                clearTimeout(timer);
+                delete window[cb];
+                if (s.parentNode) s.parentNode.removeChild(s);
+                console.log('[Vote] JSONP kết quả:', data);
+                if (data && typeof data.groom === 'number') {
+                    _voteData = data;
+                    localStorage.setItem('wedding-votes', JSON.stringify(data));
+                    renderVote();
+                    // Giữ lại trạng thái voted
+                    var _sv2 = localStorage.getItem('wedding-my-vote');
+                    if (_sv2) applyVotedState(_sv2);
+                }
+            };
+            s.onerror = function () {
+                clearTimeout(timer);
+                console.warn('[Vote] JSONP load lỗi');
+                delete window[cb];
+            };
+            s.src = _VOTE_URL + '?action=getVotes&callback=' + cb;
+            document.head.appendChild(s);
+        }
+
+        // Lấy tổng vote thực từ Google Sheets
+        function fetchVoteTotals() {
+            console.log('[Vote] Bắt đầu fetch...');
+            fetch(_VOTE_URL + '?action=getVotes')
+                .then(function (res) {
+                    console.log('[Vote] Response status:', res.status, res.url);
+                    return res.text();
+                })
+                .then(function (text) {
+                    console.log('[Vote] Response text:', text.slice(0, 120));
+                    var data = _parseVoteText(text);
+                    if (data) {
+                        console.log('[Vote] Parsed OK:', data);
+                        _voteData = data;
+                        localStorage.setItem('wedding-votes', JSON.stringify(data));
+                        renderVote();
+                        // Giữ lại trạng thái voted nếu user đã vote trước đó
+                        var _sv = localStorage.getItem('wedding-my-vote');
+                        if (_sv) applyVotedState(_sv);
+                    } else {
+                        console.warn('[Vote] Không parse được, thử JSONP...');
+                        _fetchVoteJSONP();
+                    }
+                })
+                .catch(function (err) {
+                    console.warn('[Vote] fetch() thất bại:', err.message || err, '→ thử JSONP...');
+                    _fetchVoteJSONP();
+                });
+        }
+        // Gọi ngay khi define để request bắt đầu sớm nhất có thể
+        fetchVoteTotals();
+
+        function renderVote() {
+            var total = _voteData.groom + _voteData.bride;
+            var groomPct = total > 0 ? Math.round((_voteData.groom / total) * 100) : 50;
+            var bridePct = total > 0 ? Math.round((_voteData.bride / total) * 100) : 50;
+            var gc = document.getElementById('groom-count');
+            var bc = document.getElementById('bride-count');
+            var gb = document.getElementById('groom-bar');
+            var bb = document.getElementById('bride-bar');
+            var vt = document.getElementById('vote-total');
+            if (gc) gc.textContent = _voteData.groom;
+            if (bc) bc.textContent = _voteData.bride;
+            if (gb) gb.style.width = groomPct + '%';
+            if (bb) bb.style.width = bridePct + '%';
+            if (vt) vt.textContent = total === 0 ? '0 lượt vote' : total + ' lượt vote 🎉';
+        }
+
+        function applyVotedState(voted) {
+            var groomBtn = document.getElementById('vote-groom-btn');
+            var brideBtn = document.getElementById('vote-bride-btn');
+            if (!groomBtn || !brideBtn) return;
+            groomBtn.classList.remove('voted-active', 'voted-inactive');
+            brideBtn.classList.remove('voted-active', 'voted-inactive');
+            if (voted === 'groom') {
+                groomBtn.classList.add('voted-active');
+                brideBtn.classList.add('voted-inactive');
+                if (!groomBtn.querySelector('.vote-badge')) {
+                    var b = document.createElement('span');
+                    b.className = 'vote-badge'; b.textContent = '✓';
+                    groomBtn.appendChild(b);
+                }
+            } else if (voted === 'bride') {
+                brideBtn.classList.add('voted-active');
+                groomBtn.classList.add('voted-inactive');
+                if (!brideBtn.querySelector('.vote-badge')) {
+                    var b2 = document.createElement('span');
+                    b2.className = 'vote-badge'; b2.textContent = '✓';
+                    brideBtn.appendChild(b2);
+                }
+            }
+        }
+
+        function castVote(side) {
+            if (localStorage.getItem('wedding-my-vote')) return;
+            if (!_voteData || typeof _voteData.groom !== 'number' || typeof _voteData.bride !== 'number') {
+                try {
+                    var _raw2 = localStorage.getItem('wedding-votes');
+                    _voteData = _raw2 ? JSON.parse(_raw2) : null;
+                } catch (e) { _voteData = null; }
+                if (!_voteData || typeof _voteData.groom !== 'number' || typeof _voteData.bride !== 'number') {
+                    _voteData = { groom: 0, bride: 0 };
+                }
+            }
+
+            // Cập nhật local ngay (optimistic update)
+            _voteData[side]++;
+            localStorage.setItem('wedding-votes', JSON.stringify(_voteData));
+            localStorage.setItem('wedding-my-vote', side);
+            renderVote();
+            applyVotedState(side);
+
+            // Gửi vote lên Google Sheets (fire-and-forget)
+            try {
+                var params = new URLSearchParams();
+                params.append('action', 'vote');
+                params.append('side', side);
+                params.append('voter_id', getVoterId());
+                params.append('timestamp', new Date().toLocaleString('vi-VN'));
+                fetch('https://script.google.com/macros/s/AKfycbyLBGeYor7Q24cPztdaqSNCPUd03e2I3zYZ1VnAtsDvrcqEQPLQ7sXEVJz7DI5jdcJ4/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: params.toString()
+                }).then(function () {
+                    // Sau khi gửi xong, fetch lại tổng vote thực từ server
+                    setTimeout(fetchVoteTotals, 1500);
+                }).catch(function (err) {
+                    console.warn('Vote gửi thất bại (sẽ thử lại sau):', err);
+                });
+            } catch (e) {
+                console.warn('Lỗi gửi vote:', e);
+            }
+
+            var messages = {
+                groom: [
+                    '💙 Bạn đang ủng hộ Team Chú Rể! Quốc Cường thật may mắn ✨',
+                    '💙 Team Chú Rể vô địch! Cảm ơn bạn đã vote nhé 🎉',
+                    '💙 Quốc Cường chắc đang mỉm cười với vote của bạn đó! 😄'
+                ],
+                bride: [
+                    '💗 Bạn đang ủng hộ Team Cô Dâu! Kim Chi cảm ơn bạn nhiều lắm ✨',
+                    '💗 Team Cô Dâu thắng rồi! Cảm ơn tình yêu của bạn 🌸',
+                    '💗 Kim Chi hẳn đang rất hạnh phúc với vote của bạn! 😍'
+                ]
+            };
+            var msgs = messages[side];
+            var toast = document.getElementById('vote-toast');
+            if (toast) {
+                toast.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+                toast.classList.add('show');
+            }
+        }
+
+        // Khởi tạo trạng thái vote khi trang load
+        renderVote();
+        var _savedVote = localStorage.getItem('wedding-my-vote');
+        if (_savedVote) {
+            // setTimeout nhỏ để đảm bảo DOM đã render xong
+            setTimeout(function () {
+                applyVotedState(_savedVote);
+            }, 50);
+            // Hiển thị lại toast nhắc nhở khi vào lại trang
+            var _toastMsgs = {
+                groom: '💙 Bạn đã ủng hộ Team Chú Rể — Quốc Cường! ✨',
+                bride: '💗 Bạn đã ủng hộ Team Cô Dâu — Kim Chi! ✨'
+            };
+            setTimeout(function () {
+                var toast = document.getElementById('vote-toast');
+                if (toast && _toastMsgs[_savedVote]) {
+                    toast.textContent = _toastMsgs[_savedVote];
+                    toast.classList.add('show');
+                }
+            }, 800);
+        }
+        // Luôn fetch số vote thực từ server khi load trang
+        // Luôn fetch số vote thực từ server khi load trang (đã gọi sớm hơn ở trên)
+
+        // ─── [7] Copy Bank Account ───
         function copyBank(id, btn) {
             const num = document.getElementById(id).textContent.replace(/\s/g, '');
             navigator.clipboard.writeText(num).then(() => {
