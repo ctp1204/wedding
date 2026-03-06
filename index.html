@@ -2064,9 +2064,7 @@
         <h2 class="section-title">Chú rể & <em>Cô dâu</em></h2>
         <div class="couple-cards">
             <div class="couple-card reveal">
-                <img class="couple-photo"
-                    src="https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/642716831_3087214864797211_6784234955589024821_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeFVwNOZRFiCCX0uBkseKNycMGj3AkVgUTQwaPcCRWBRNOkkz66pdk8jc7i-yroKLmAJLFrfmZGnPn91kj0_8_Pq&_nc_ohc=gMyvGazWLe0Q7kNvwEaQmEl&_nc_oc=AdlQp0j-k5wbN7dVbZsliFfjML5U8-MPDC38jgnP4ksmg9VucnKNkrwPGIgS_bWGRBE&_nc_zt=23&_nc_ht=scontent.fdad1-2.fna&_nc_gid=KBJHpqpgD1K2smunkDGrSg&oh=00_AfsEsPjrmxT1DoIHxwT7TWjjyGw5fk7G9d7HsObSa58Hjw&oe=69A72A1E"
-                    alt="Chú rể Quốc Cường">
+                <img class="couple-photo" src="images/chure.jpg" alt="Chú rể Quốc Cường">
                 <p class="couple-role">Chú rể</p>
                 <h3 class="couple-name">Lê Quốc Cường</h3>
                 <p class="couple-bio">Chàng trai với nụ cười ấm áp, luôn biết cách khiến Kim Chi bật cười trong mọi hoàn
@@ -2841,7 +2839,9 @@
         function toggleDark() {
             document.body.classList.toggle('dark');
             const btn = document.getElementById('dark-toggle');
-            btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+            if (btn) {
+                btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+            }
             localStorage.setItem('wedding-dark', document.body.classList.contains('dark') ? '1' : '0');
         }
         if (localStorage.getItem('wedding-dark') === '1') {
