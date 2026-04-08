@@ -198,7 +198,7 @@
             align-items: center;
             gap: 0.4rem;
             font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
+            font-size: 0.8rem;
             letter-spacing: 0.3em;
             color: var(--gold);
             animation: bounce 2s infinite;
@@ -357,10 +357,11 @@
 
         .event-type {
             font-family: 'Cinzel', serif;
-            font-size: 0.65rem;
+            font-size: 0.8rem;
             letter-spacing: 0.4em;
             color: var(--gold);
             margin-bottom: 0.8rem;
+            text-transform: uppercase;
         }
 
         .event-name {
@@ -393,6 +394,18 @@
             display: flex;
             flex-direction: column;
             gap: 3rem;
+            position: relative;
+        }
+
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.25) 5%, rgba(201, 168, 76, 0.25) 95%, transparent);
+            transform: translateX(-50%);
         }
 
         .story-item {
@@ -401,6 +414,7 @@
             gap: 2.5rem;
             align-items: center;
             position: relative;
+            z-index: 1;
         }
 
         .story-item::after {
@@ -409,8 +423,8 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: var(--rose-deep);
             border: 3px solid var(--warm-white);
@@ -420,14 +434,24 @@
 
         /* Phần TEXT bên trái */
         .story-text {
-            padding: 2rem 2rem 2rem 1.5rem;
-            border-right: 1px solid rgba(201, 168, 76, 0.25);
+            padding: 2rem 2.5rem 2rem 1.5rem;
+            text-align: right;
+        }
+
+        .story-item:nth-child(even) .story-text {
+            order: 2;
+            text-align: left;
+            padding: 2rem 1.5rem 2rem 2.5rem;
+        }
+
+        .story-item:nth-child(even) .story-photo {
+            order: 1;
         }
 
         .story-year {
             display: inline-block;
             font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
+            font-size: 0.75rem;
             letter-spacing: 0.35em;
             color: var(--warm-white);
             background: var(--rose-deep);
@@ -468,10 +492,14 @@
 
         .story-photo img {
             width: 100%;
-            height: 100%;
+            height: 115%;
             object-fit: cover;
             display: block;
             transition: transform 0.6s ease;
+        }
+
+        .custom-photo img {
+            height: 150% !important;
         }
 
         .story-photo:hover img {
@@ -487,18 +515,41 @@
 
         /* Responsive */
         @media(max-width: 640px) {
+            .story-timeline::before {
+                left: 70px;
+                /* Aligned with schedule-timeline */
+                transform: none;
+            }
+
             .story-item {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding-left: 90px;
+                /* Space for the timeline on the left */
             }
 
             .story-item::after {
-                display: none;
+                left: 70px;
+                top: 2rem;
+                /* Align with the year/heading area */
+                transform: translateX(-50%);
             }
 
             .story-text {
-                border-right: none;
-                border-bottom: 1px solid rgba(201, 168, 76, 0.25);
-                padding: 1.2rem;
+                padding: 0 !important;
+                text-align: left !important;
+            }
+
+            .story-item:nth-child(even) .story-text {
+                order: 1;
+            }
+
+            .story-item:nth-child(even) .story-photo {
+                order: 2;
+            }
+
+            .story-photo {
+                aspect-ratio: 16/9;
             }
         }
 
@@ -605,17 +656,54 @@
 
         /* ─── FOOTER ─── */
         footer {
+            padding: 5rem 1.5rem;
             text-align: center;
-            padding: 3rem 1rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--text-mid);
-            border-top: 1px solid var(--gold-light);
+            background: var(--cream);
+            position: relative;
         }
 
-        footer span {
-            color: var(--rose-deep);
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 1px;
+            background: var(--gold-light);
+            opacity: 0.6;
+        }
+
+        .footer-names {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            letter-spacing: 0.3em;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-names span {
+            color: var(--gold);
+            margin: 0 0.5rem;
+            font-size: 0.8em;
+        }
+
+        .footer-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-motto {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            opacity: 0.8;
+            letter-spacing: 0.05em;
         }
 
         /* ─── REVEAL ANIMATION ─── */
@@ -681,6 +769,7 @@
             font-size: 1.25rem;
             color: var(--gold);
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         .welcome-names {
@@ -975,10 +1064,11 @@
 
         .couple-role {
             font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
+            font-size: 1rem;
             letter-spacing: 0.4em;
             color: var(--gold);
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
         .couple-name {
@@ -1245,6 +1335,74 @@
             right: 0.4rem;
         }
 
+        /* Mobile responsive tweaks for vote section (desktop is already tuned) */
+        @media (max-width: 520px) {
+            .couple-vote-section {
+                padding: 2rem 1.15rem;
+                border-radius: 18px;
+            }
+
+            .vote-label {
+                font-size: 1.35rem;
+            }
+
+            .vote-sublabel {
+                margin-bottom: 1.4rem;
+            }
+
+            /* Prevent "VS" from sticking to the first button when it wraps */
+            .vote-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.9rem;
+            }
+
+            .vote-btn {
+                width: min(360px, 100%);
+                min-width: 0;
+                margin: 0 auto;
+                padding: 1rem 1.4rem;
+            }
+
+            .vote-vs {
+                padding: 0.35rem 0.8rem;
+                border-radius: 999px;
+                background: rgba(201, 168, 76, 0.1);
+                border: 1px solid rgba(201, 168, 76, 0.25);
+            }
+
+            .vote-result {
+                max-width: 420px;
+            }
+
+            .vote-bar-row {
+                gap: 0.55rem;
+            }
+
+            .vote-bar-label {
+                min-width: 68px;
+                font-size: 0.75rem;
+            }
+
+            .vote-bar-label.groom-label {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .vote-bar-label.bride-label {
+                align-items: flex-end;
+                text-align: right;
+            }
+
+            .vote-count {
+                font-size: 1.2rem;
+            }
+
+            .vote-bar-track {
+                height: 12px;
+            }
+        }
+
         /* ─── BRIDAL PARTY ─── */
         #bridal-party {
             max-width: 960px;
@@ -1393,37 +1551,40 @@
 
         .sch-item {
             display: flex;
-            gap: 1.5rem;
             align-items: flex-start;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
+            position: relative;
         }
 
         .sch-time {
-            width: 56px;
+            width: 70px;
             text-align: right;
+            padding-right: 1.5rem;
             font-family: 'Cinzel', serif;
-            font-size: 0.65rem;
+            font-size: 0.8rem;
             letter-spacing: 0.1em;
             color: var(--gold);
-            padding-top: 0.1rem;
+            padding-top: 0.15rem;
             flex-shrink: 0;
         }
 
         .sch-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--rose-deep);
             border: 2px solid var(--warm-white);
             box-shadow: 0 0 0 3px var(--rose);
             flex-shrink: 0;
-            margin-top: 0.15rem;
+            margin-top: 0.2rem;
             position: relative;
             z-index: 1;
+            transform: translateX(-50%);
         }
 
         .sch-body {
             flex: 1;
+            padding-left: 1.5rem;
         }
 
         .sch-title {
@@ -1649,15 +1810,15 @@
 
         /* ─── GIFT / QR ─── */
         #gift {
-            max-width: 760px;
+            max-width: 960px;
         }
 
         .gift-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-top: 3rem;
-            align-items: start;
+            align-items: center;
+            justify-content: center;
         }
 
         @media(max-width:600px) {
@@ -2021,11 +2182,11 @@
     <!-- ═══════════ NAVIGATION BAR ═══════════ -->
     <nav id="nav-bar">
         <a class="nav-link" href="#couple-intro">Cô dâu & Chú rể</a>
+        <a class="nav-link" href="#couple-vote">Bình chọn</a>
+        <a class="nav-link" href="#countdown">Thời gian</a>
         <a class="nav-link" href="#event">Hôn lễ</a>
-        <a class="nav-link" href="#schedule">Lịch trình</a>
         <a class="nav-link" href="#story">Tình yêu</a>
-        <a class="nav-link" href="#gallery">Gallery</a>
-        <a class="nav-link" href="#dress-code">Trang phục</a>
+        <a class="nav-link" href="#gallery">Hình ảnh</a>
         <a class="nav-link" href="#rsvp">Lời chúc</a>
         <a class="nav-link" href="#gift">Mừng cưới</a>
         <a class="nav-link" href="#maps">Địa điểm</a>
@@ -2088,14 +2249,14 @@
             <div class="couple-card reveal">
                 <img class="couple-photo bride-photo" src="images/co-dau.jpg" alt="Cô dâu Kim Chi">
                 <p class="couple-role">Cô dâu</p>
-                <h3 class="couple-name">Kim Chi</h3>
+                <h3 class="couple-name">Phùng Kim Chi</h3>
                 <p class="couple-bio">Cô gái dịu dàng với trái tim rộng lớn, yêu thích những buổi chiều cà phê bên người
                     thương. Cô tin rằng hạnh phúc nằm trong những điều nhỏ bé mỗi ngày.</p>
             </div>
         </div>
 
         <!-- ═══════════ COUPLE VOTE ═══════════ -->
-        <div class="couple-vote-section">
+        <div id="couple-vote" class="couple-vote-section">
             <p class="vote-label">💬 Bạn đang "Team" nào?</p>
             <p class="vote-sublabel">Hãy bày tỏ sự ủng hộ của bạn nhé! Mỗi người được chọn một lần thôi 😄</p>
 
@@ -2247,7 +2408,7 @@
     </section>
 
     <!-- ═══════════ SCHEDULE ═══════════ -->
-    <section id="schedule" class="reveal">
+    <!-- <section id="schedule" class="reveal">
         <p class="section-tag">Lịch trình</p>
         <h2 class="section-title">Chương trình <em>ngày cưới</em></h2>
         <div class="schedule-list">
@@ -2294,7 +2455,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ═══════════ STORY ═══════════ -->
     <section id="story" class="reveal">
@@ -2313,8 +2474,7 @@
                         Nẵng hiền hòa và lộng gió. Một cuộc gặp gỡ giản dị nhưng để lại nhiều ấn tượng đẹp.</p>
                 </div>
                 <div class="story-photo">
-                    <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/484107118_2702746303448572_2441360995200715569_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeGg8WObSwBRkzVypNlcyvj5JjpZXMpLgmcmOllcykuCZ8HFfkw7hJC9ZtHczJcytUxDR71BQq2bwaZXsX5ZFJVQ&_nc_ohc=Nh9RZcnxPlAQ7kNvwG9m9Z1&_nc_oc=AdmyeDSwWUOIFCkF9V3B3kUZXULN67HJyeezKbZAWQJBAPxy2igKUaD74L80SujqdRk&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=8v7lJl1PKMCDK01kRb14YA&oh=00_AfteLMECp9oK3zznY7OyLqqrD5vSK71X3pMH03uV4-uOZQ&oe=69A72DEA"
-                        alt="Lần đầu gặp gỡ 2019" loading="lazy">
+                    <img src="images/lan-gap.jpg" alt="Lần đầu gặp gỡ 2019" loading="lazy">
                     <div class="story-photo-overlay"></div>
                 </div>
             </div>
@@ -2330,8 +2490,7 @@
                         vừa đi vừa trò chuyện, mỗi khoảnh khắc trên đường đều trở nên đáng nhớ.</p>
                 </div>
                 <div class="story-photo">
-                    <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/487423248_2718322575224278_1359738272274537928_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeFSHM7YkwS_TOz38_6wjeuHDcsMe7vj1RYNywx7u-PVFiVLojTCExKHd5xiHAfSxk1ScZUKVvi7bKw2tkHa0o8y&_nc_ohc=uCegUKiPEQIQ7kNvwESgGC9&_nc_oc=AdmD-oNuRTkzYPo_T8FM31NsMNAoyOC0el07djwnnukNyFShh_e1xQlOsp_uJ3udFv0&_nc_zt=23&_nc_ht=scontent.fdad1-4.fna&_nc_gid=DjPR5zxbyt8Al7N0PCs1pQ&oh=00_AftG57NvyU5kbGzgwx1qmvNwegsvm0FqHrVRUS2Wukfetg&oe=69A74928"
-                        alt="Buổi hẹn hò đầu tiên 2020" loading="lazy">
+                    <img src="images/buoi-hen-ho.jpg" alt="Buổi hẹn hò đầu tiên 2020" loading="lazy">
                     <div class="story-photo-overlay"></div>
                 </div>
             </div>
@@ -2345,9 +2504,8 @@
                         lòng, chúng tôi mới hiểu rằng điều quý giá nhất không phải là đi bao xa, mà là vẫn chọn ở lại
                         bên nhau. Và bên nhau, chính là nơi chúng tôi thuộc về.</p>
                 </div>
-                <div class="story-photo">
-                    <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/490361116_2737218503334685_377976289779499883_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeE9J64ptCGvE0R4x9bsBkedfXy32kDcMuJ9fLfaQNwy4hdte_M6G4q04cR1Cwu_7Uhto7YKyyXkeloycmQsEdbA&_nc_ohc=Nqj2jaDuc1YQ7kNvwEUauUd&_nc_oc=AdmZGOv9q7USmkDCGEd32rME0En9Ge-XCbKE0hZUwNIe6ocRHFWoaYNAMimvByMC7mA&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=IzLmDNEWu83qTsH4pnk7Gw&oh=00_AfumhhJca65dkStx82v5wQd8onVX6eBQgQuE-kIbh-CKWQ&oe=69A75B44"
-                        alt="Chính thức thuộc về nhau 2022" loading="lazy">
+                <div class="story-photo custom-photo">
+                    <img src="images/thuoc-ve-nhau.jpg" alt="Chính thức thuộc về nhau 2022" loading="lazy">
                     <div class="story-photo-overlay"></div>
                 </div>
             </div>
@@ -2363,8 +2521,7 @@
                         hành trình của yêu thương, trách nhiệm và gắn bó dài lâu.</p>
                 </div>
                 <div class="story-photo">
-                    <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/490361116_2737218503334685_377976289779499883_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeE9J64ptCGvE0R4x9bsBkedfXy32kDcMuJ9fLfaQNwy4hdte_M6G4q04cR1Cwu_7Uhto7YKyyXkeloycmQsEdbA&_nc_ohc=Nqj2jaDuc1YQ7kNvwEUauUd&_nc_oc=AdmZGOv9q7USmkDCGEd32rME0En9Ge-XCbKE0hZUwNIe6ocRHFWoaYNAMimvByMC7mA&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=IzLmDNEWu83qTsH4pnk7Gw&oh=00_AfumhhJca65dkStx82v5wQd8onVX6eBQgQuE-kIbh-CKWQ&oe=69A75B44"
-                        alt="Lời cầu hôn 2024" loading="lazy">
+                    <img src="images/wedding-21.jpg" alt="Lời cầu hôn 2024" loading="lazy">
                     <div class="story-photo-overlay"></div>
                 </div>
             </div>
@@ -2379,8 +2536,7 @@
                         thương, sẻ chia và đồng hành qua mọi vui buồn của cuộc sống</p>
                 </div>
                 <div class="story-photo">
-                    <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/490361116_2737218503334685_377976289779499883_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeE9J64ptCGvE0R4x9bsBkedfXy32kDcMuJ9fLfaQNwy4hdte_M6G4q04cR1Cwu_7Uhto7YKyyXkeloycmQsEdbA&_nc_ohc=Nqj2jaDuc1YQ7kNvwEUauUd&_nc_oc=AdmZGOv9q7USmkDCGEd32rME0En9Ge-XCbKE0hZUwNIe6ocRHFWoaYNAMimvByMC7mA&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=IzLmDNEWu83qTsH4pnk7Gw&oh=00_AfumhhJca65dkStx82v5wQd8onVX6eBQgQuE-kIbh-CKWQ&oe=69A75B44"
-                        alt="Lời cầu hôn 2024" loading="lazy">
+                    <img src="images/wedding-17.jpg" alt="Lời cầu hôn 2024" loading="lazy">
                     <div class="story-photo-overlay"></div>
                 </div>
             </div>
@@ -2390,7 +2546,7 @@
     <!-- ═══════════ GALLERY ═══════════ -->
     <section id="gallery" class="reveal">
         <p class="section-tag">Ký ức đẹp</p>
-        <h2 class="section-title">Thư viện <em>ảnh cùng nhau</em></h2>
+        <h2 class="section-title">Thư viện <em>ảnh cưới</em></h2>
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox(0)"><img src="images/wedding-01.jpg" alt="Wedding 1"
                     loading="lazy"></div>
@@ -2412,6 +2568,40 @@
                     loading="lazy"></div>
             <div class="gallery-item" onclick="openLightbox(9)"><img src="images/wedding-10.jpg" alt="Wedding 10"
                     loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(10)"><img src="images/wedding-11.jpg" alt="Wedding 11"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(11)"><img src="images/wedding-12.jpg" alt="Wedding 12"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(12)"><img src="images/wedding-13.jpg" alt="Wedding 13"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(13)"><img src="images/wedding-14.jpg" alt="Wedding 14"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(14)"><img src="images/wedding-15.jpg" alt="Wedding 15"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(15)"><img src="images/wedding-16.jpg" alt="Wedding 16"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(16)"><img src="images/wedding-17.jpg" alt="Wedding 17"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(17)"><img src="images/wedding-18.jpg" alt="Wedding 18"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(18)"><img src="images/wedding-19.jpg" alt="Wedding 19"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(19)"><img src="images/wedding-20.jpg" alt="Wedding 20"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(20)"><img src="images/wedding-21.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(21)"><img src="images/wedding-22.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(22)"><img src="images/wedding-23.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(23)"><img src="images/wedding-24.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(24)"><img src="images/wedding-25.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(25)"><img src="images/wedding-26.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(26)"><img src="images/wedding-27.jpg" alt="Wedding 21"
+                    loading="lazy"></div>
         </div>
     </section>
 
@@ -2424,13 +2614,12 @@
     </div>
 
     <!-- ═══════════ DRESS CODE ═══════════ -->
-    <section id="dress-code" class="reveal">
+    <!-- <section id="dress-code" class="reveal">
         <p class="section-tag">Trang phục</p>
         <h2 class="section-title">Gợi ý <em>trang phục</em> cho khách mời</h2>
         <p class="dress-note">Chúng mình muốn buổi lễ thêm rực rỡ với tông màu ấm áp.<br>
             Hãy diện lên mình bộ trang phục đẹp nhất để cùng chia vui nhé! 🌸</p>
 
-        <!-- Bảng màu gợi ý -->
         <div class="dress-palette">
             <div class="dress-swatch">
                 <div class="swatch-circle" style="background:#fce4ec;"></div>
@@ -2460,7 +2649,6 @@
 
         <p class="dress-avoid">⚠ Vui lòng <span>tránh mặc màu trắng</span> — đó là màu dành riêng cho cô dâu nhé ♥</p>
 
-        <!-- Cards gợi ý -->
         <div class="dress-code-cards">
             <div class="dress-card reveal">
                 <p class="dress-card-title">🎀 Dành cho khách nữ</p>
@@ -2473,7 +2661,7 @@
                     hoặc trắng sứ đều thanh lịch. Tránh quần jeans và trang phục thể thao.</p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ═══════════ RSVP ═══════════ -->
     <section id="rsvp" class="reveal">
@@ -2515,19 +2703,58 @@
         <h2 class="section-title">Gửi chút <em>tâm lòng</em></h2>
         <div class="gift-grid">
             <div class="bank-card">
-                <p class="bank-name">Ngân hàng Vietcombank</p>
-                <p class="bank-holder">Lê Quốc Cường</p>
-                <p class="bank-num" id="bank-num-1">1234 5678 9012</p>
-                <button class="btn-copy" onclick="copyBank('bank-num-1', this)">Sao chép số TK</button>
-                <p class="bank-name" style="margin-top:1.5rem">Ngân hàng Techcombank</p>
-                <p class="bank-holder">Phùng Thị Chi</p>
-                <p class="bank-num" id="bank-num-2">9876 5432 1098</p>
-                <button class="btn-copy" onclick="copyBank('bank-num-2', this)">Sao chép số TK</button>
-            </div>
-            <div class="qr-box">
-                <p class="qr-label">QR Code — Trang Wedding</p>
-                <div id="qrcode"></div>
-                <p class="qr-hint">Quét để chia sẻ trang cưới của chúng tôi! ♥</p>
+                <style>
+                    .bank-card-content {
+                        display: flex;
+                        gap: 2rem;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 2rem;
+                    }
+
+                    .bank-card-content:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .bank-qr-img {
+                        width: 140px;
+                        height: 140px;
+                        border-radius: 8px;
+                        border: 4px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                    @media (max-width: 500px) {
+                        .bank-card-content {
+                            flex-direction: column;
+                            text-align: center;
+                            gap: 1rem;
+                        }
+                    }
+                </style>
+
+                <!-- Chú rể -->
+                <div class="bank-card-content">
+                    <div class="bank-details">
+                        <p class="bank-name">Ngân hàng Techcombank</p>
+                        <p class="bank-holder">Lê Quốc Cường</p>
+                        <p class="bank-num" id="bank-num-1">1903 6862 9660 10</p>
+                        <button class="btn-copy" onclick="copyBank('bank-num-1', this)">Sao chép số TK</button>
+                    </div>
+                    <img class="bank-qr-img" src="images/qr-code/qr-code-chure.jpg" alt="QR Chú rể">
+                </div>
+
+                <div style="height: 1px; background: rgba(255, 250, 245, 0.1); margin: 2rem 0;"></div>
+
+                <!-- Cô dâu -->
+                <div class="bank-card-content">
+                    <div class="bank-details">
+                        <p class="bank-name">Ngân hàng Techcombank</p>
+                        <p class="bank-holder">Phùng Thị Chi</p>
+                        <p class="bank-num" id="bank-num-2">1903 6634 0120 23</p>
+                        <button class="btn-copy" onclick="copyBank('bank-num-2', this)">Sao chép số TK</button>
+                    </div>
+                    <img class="bank-qr-img" src="images/qr-code/qr-code-chure.jpg" alt="QR Cô dâu">
+                </div>
             </div>
         </div>
     </section>
@@ -2570,9 +2797,9 @@
 
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
-        <p>Quốc Cường <span>♥</span> Kim Chi · 19 — 20.05.2026</p>
-        <p style="font-size:0.8rem; margin-top:0.5rem; font-style:normal; letter-spacing:0.1em; color: var(--gold);">
-            Cùng nhau mãi mãi</p>
+        <div class="footer-names">Quốc Cường <span>♥</span> Kim Chi</div>
+        <div class="footer-date">Thứ Ba, 19.05.2026 & Thứ Tư, 20.05.2026</div>
+        <div class="footer-motto">"Cùng nhau đi đến tận cùng thời gian"</div>
     </footer>
 
     <!-- ═══════════ MUSIC PLAYER ═══════════ -->
