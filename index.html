@@ -676,6 +676,13 @@
             margin-bottom: 1.5rem;
         }
 
+        .palace-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
         .welcome-names {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2.8rem, 8vw, 5.5rem);
@@ -1152,7 +1159,7 @@
             flex-direction: column;
             align-items: center;
             gap: 0.1rem;
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             min-width: 80px;
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-dark);
@@ -1201,7 +1208,7 @@
         }
 
         .vote-total {
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             color: var(--text-mid);
             letter-spacing: 0.08em;
             margin-top: 0.5rem;
@@ -1312,7 +1319,7 @@
 
         .map-tag {
             font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
+            font-size: 0.8rem;
             letter-spacing: 0.3em;
             color: var(--gold);
         }
@@ -1322,6 +1329,14 @@
             font-size: 1.2rem;
             color: var(--text-dark);
             margin: 0.2rem 0;
+        }
+
+        .palace-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            text-transform: uppercase;
         }
 
         .map-addr {
@@ -2064,16 +2079,14 @@
         <h2 class="section-title">Chú rể & <em>Cô dâu</em></h2>
         <div class="couple-cards">
             <div class="couple-card reveal">
-                <img class="couple-photo" src="images/chure.jpg" alt="Chú rể Quốc Cường">
+                <img class="couple-photo" src="images/chu-re.jpg" alt="Chú rể Quốc Cường">
                 <p class="couple-role">Chú rể</p>
                 <h3 class="couple-name">Lê Quốc Cường</h3>
                 <p class="couple-bio">Chàng trai với nụ cười ấm áp, luôn biết cách khiến Kim Chi bật cười trong mọi hoàn
                     cảnh. Anh tin rằng tình yêu là hành trình cùng nhau lớn lên.</p>
             </div>
             <div class="couple-card reveal">
-                <img class="couple-photo bride-photo"
-                    src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/522667473_2864084873776879_3354141089457775505_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeF9BeWgix0RTO7qq2B-EXs8_UURx3jqDkn9RRHHeOoOSSxj2bgPQCR2_qvXWCtD--JfLrbfbRqpYU3dYbHUS7-b&_nc_ohc=i0p0afvziOMQ7kNvwGIn0Uv&_nc_oc=AdnOGpyxe4Mp20IVN4A-IkaDSyh1XGb_aAttu1IMzpK2LLe56JPmVapc24T4TDXSA9Q&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=6e5LeexpHWToMJVzXjfFOQ&oh=00_Aftgmb0ndvIIRK_JrYOlYwiOQEkZjckzE7kUbNcZ3d9hKQ&oe=69A7472C"
-                    alt="Cô dâu Kim Chi">
+                <img class="couple-photo bride-photo" src="images/co-dau.jpg" alt="Cô dâu Kim Chi">
                 <p class="couple-role">Cô dâu</p>
                 <h3 class="couple-name">Kim Chi</h3>
                 <p class="couple-bio">Cô gái dịu dàng với trái tim rộng lớn, yêu thích những buổi chiều cà phê bên người
@@ -2196,17 +2209,22 @@
     <!-- ═══════════ EVENT INFO ═══════════ -->
     <section id="event" class="reveal">
         <p class="section-tag">Chương trình lễ cưới</p>
-        <h2 class="section-title">Thông tin <em>Hôn Lễ</em></h2>
+        <h2 class="section-title">Thông tin <em>Hôn Lễ</em> & <em>Tiệc Cưới</em></h2>
         <div class="event-cards">
             <div class="event-card reveal">
                 <div class="event-icon">🌸</div>
-                <div class="event-type">Lễ Nhà Nữ</div>
+                <div class="event-type">Lễ Nhà Nữ & Tiệc Cưới</div>
                 <div class="event-name">Nhà Cô Dâu</div>
                 <div class="event-detail">
                     <strong>Thứ Ba, 19 tháng 5, 2026</strong>
                     <em style="font-size:0.8rem; color:var(--gold);">03/04 Giáp Ngọ</em><br><br>
                     📍 Địa điểm nhà gái<br>
-                    19 Bùi Trung Lập, TT. Gio Linh, Gio Linh, Quảng Trị
+                    19 Bùi Trung Lập, Thôn 4, Xã Gio Linh, Gio Linh, Quảng Trị
+                    <br><br>
+                    📍 Địa điểm tiệc cưới<br>
+                    <strong>Nhà Hàng</strong>
+                    <div class="palace-text">Kim Cúc Palace</div>
+                    <div class="map-addr">178, 180 Đường 2/4, Thôn 6, Xã Gio Linh, Quảng Trị</div>
                 </div>
             </div>
             <div class="event-card reveal">
@@ -2217,7 +2235,12 @@
                     <strong>Thứ Tư, 20 tháng 5, 2026</strong>
                     <em style="font-size:0.8rem; color:var(--gold);">04/04 Giáp Ngọ</em><br><br>
                     📍 Địa điểm nhà trai<br>
-                    Kiệt 16/10 Trần Phú, Phường 1, Quảng Trị
+                    Kiệt 16/10 Trần Phú, Phường Quảng Trị, Quảng Trị
+                    <br><br><br>
+                    📍 Địa điểm tiệc cưới<br>
+                    <strong>Nhà Hàng</strong>
+                    <div class="palace-text">Roza Palace</div>
+                    <div class="map-addr">Nhà Khách Thành Cổ, 01 Lý Thái Tổ, Phường Quảng Trị, Quảng Trị</div>
                 </div>
             </div>
         </div>
@@ -2369,33 +2392,26 @@
         <p class="section-tag">Ký ức đẹp</p>
         <h2 class="section-title">Thư viện <em>ảnh cùng nhau</em></h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(0)"><img
-                    src="https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/639632324_3055935174796348_3284999476177740146_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeHU4m5RSxXKCJmfzxgM2K4VkuohSD6pHF2S6iFIPqkcXTB_BiwwIsbSX1Nr_zENP38QzZNrEksIu-MDRlIslEW0&_nc_ohc=khO2GmBKM4IQ7kNvwHaqTsH&_nc_oc=AdlFyF8Gvibewae3ocUi-_BqQHG_h1JrHbVlX2t2X4bbnK45RVDSUQIdwjnUDt7bqao&_nc_zt=23&_nc_ht=scontent.fdad5-1.fna&_nc_gid=HI2_QZOpluO1kXSz9Ad9Bg&oh=00_AfumOSP9vdSOqM1ug_8gZqzupkHRNweJq7kVPiFT0qNXUw&oe=69A73F92"
-                    alt="Wedding 1" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(1)"><img
-                    src="https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/642716831_3087214864797211_6784234955589024821_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeFVwNOZRFiCCX0uBkseKNycMGj3AkVgUTQwaPcCRWBRNOkkz66pdk8jc7i-yroKLmAJLFrfmZGnPn91kj0_8_Pq&_nc_ohc=gMyvGazWLe0Q7kNvwH4TMk7&_nc_oc=AdlLEDpczCp5hc65fYd3d8Hr0yDhHACX8E-Phi9Kx6voCQDS33DVc6mP-pFJUMIvNH0&_nc_zt=23&_nc_ht=scontent.fdad5-1.fna&_nc_gid=jHeNdDVVEJOx-c28w_Sd3A&oh=00_AfsXc0-VVqX3hU1oncb8mkv7aFCtuwDW5CnN3cLAOpZjAg&oe=69A72A1E"
-                    alt="Wedding 2" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(2)"><img
-                    src="https://scontent.fdad5-1.fna.fbcdn.net/v/t39.30808-6/488934113_2751225418396159_6848740566230081758_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeFq4IcrpA3vvzQYJKpyLOPJX4vDWVxdpS9fi8NZXF2lL0r3gwJ-PrLqexRpEkuCxc1ZoYS1NgddD4sa41B3BZrs&_nc_ohc=Klps1uI2AoEQ7kNvwF5NqMk&_nc_oc=AdnrVEX93-ZhGRNy4iIADGhQaYZT6IGcxIJ6p0oN1hk0IvEVUP6p-LaRJHF6kGEu7do&_nc_zt=23&_nc_ht=scontent.fdad5-1.fna&_nc_gid=HMRIh_cahbznNokzin-01Q&oh=00_AfukkDP2m1cvy7fdTpFUlNOe7vK7o6dkxCEaIlZ1dcgxsw&oe=69A72CD7"
-                    alt="Wedding 3" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(3)"><img
-                    src="https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/517348435_2852233838295316_4719690202878606719_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHARDiDBjQXuACaAouUtimwJa22NUsncXMlrbY1Sydxc3BgtILPYtuhu0B03gHVeVVamXAG4D9P9G9NcpTN-0Aa&_nc_ohc=jKgxBKbFlZsQ7kNvwHBT5p1&_nc_oc=Adm8AnvDieSPTZDyrMY9HC-7vJRm_ayouGtoRyKxbRXW5KiVioCK5481YtEdqm0P5K4&_nc_zt=23&_nc_ht=scontent.fdad1-2.fna&_nc_gid=4FxcGj_rPgRv16gbzWPY6g&oh=00_AfsPujDTNz8Mgh4QprDM3M7voFJRU5zJcS14ZT1DQBEg5A&oe=69A73718"
-                    alt="Wedding 4" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(4)"><img
-                    src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/518271113_2852233628295337_473412564354966020_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHCHH4ihS5LHrzWtGdRgCyC-87ygqZ9QLr7zvKCpn1AurvWWSlKan-D5zhKf-N2heJoFmQWncMd0k777bGbaS4n&_nc_ohc=Zw_ONmHHbpQQ7kNvwGXpWih&_nc_oc=Adkq5tdARDJv2OYoxrmpdTuenDNAGXxb1SM_ugrcst2FsiSvSRQsWSKsVFnExkDobno&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=zV7u7WK4YNQ1rPal4fQjQA&oh=00_Afta4AHdtaVyFSkHQC1W1sNR7-hsOEs6kDTTciyiCd-ZJg&oe=69A74FF3"
-                    alt="Wedding 5" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(5)"><img
-                    src="https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/489821123_2753199528198748_2088948294319316595_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHAEGua8Zz-a_pA9AE6R8GPiQBGiqnNY5WJAEaKqc1jlfrnF0EFuZwt_y8xZDbp4ZqnMGK4gkdF7W2zezMk0obS&_nc_ohc=O4hB7C-FUB4Q7kNvwH-0fDq&_nc_oc=AdlCo1VU6ocX6PfLwVoPo0VJ7nQ0YrQJ5E75XNGWGuir8Dh9QM38IAOzVlydgGnW4CE&_nc_zt=23&_nc_ht=scontent.fdad1-2.fna&_nc_gid=3ZWCXtmYWg1uQqO5HN0c8A&oh=00_AfsepoInxb1M4u7skEH6EHFp6YmO52bBvTLFND1HXkBEZw&oe=69A73AD4"
-                    alt="Wedding 6" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(6)"><img
-                    src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/487468318_2744126592439375_830174435467668734_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeEWRxSf7nzZf__grSWauV4X2ge6SqR1jWzaB7pKpHWNbFNCN24woJ4oEmC6jt1nuLFRfYD4dEbYgIW9C-17iPjC&_nc_ohc=omVaq-1NO7cQ7kNvwGyreRW&_nc_oc=AdlmgVVJE2ze4P4vZzbD8AwvhGChXcH8pmXVPUyansuwWefgv_iM4GM7RizzuwqZ6d4&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=WHkA-gll84YkhaLPiGK7hw&oh=00_Afs7sMpPfD9cjJ8-ZwviFy_fCnlC6RAhDXsezmnIbOYyjA&oe=69A72A1E"
-                    alt="Wedding 7" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(7)"><img
-                    src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/514659436_2820537115002823_4713341422300068003_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=2a1932&_nc_eui2=AeF71VDmyWBn0z743Um4Ji8QJ-H_Fvl08Ykn4f8W-XTxiVLrcRY0VKXO67lNt0lPzuK5dXj9pj62YN2sCZGaK2oI&_nc_ohc=6ufq1q72p-cQ7kNvwEZMtzD&_nc_oc=AdkADCCJhBk97IMRou3r84FPFD7p7j4xF6qQIOd9JoKbzhaKD3HGJEayRb0XqVna3YQ&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=FyNLFWKS59QzvvSF-UmBEA&oh=00_AfskRK_UAifqcYtItnZUGe570l7H0xgFI-GEsXwVEWg46A&oe=69A72AEF"
-                    alt="Wedding 8" loading="lazy"></div>
-            <div class="gallery-item" onclick="openLightbox(8)"><img
-                    src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/492000112_2747180485671820_3000319269281437027_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeFm1qAiCcSkkbQpXJcg-vhAkABhs_X5zuuQAGGz9fnO60FVC3e0kH9_JZxekKP5GIUorn9nL0da-hGZ0hw5YcqQ&_nc_ohc=dApY6o1lVKEQ7kNvwGJPToZ&_nc_oc=AdljCUTSd4VU3GtOpTIBrRV7C7GT4MaJvB0dCdm7d0sNrEmV3HfIwiqdhRyixOGiG8U&_nc_zt=23&_nc_ht=scontent.fdad1-4.fna&_nc_gid=sbQ1obwIFCxgrwA1qAKebA&oh=00_Afv1I5RDjxYMb6FYxk-oZlZxlI65P3Knd5ii6_Wqz1i0Eg&oe=69A7475A"
-                    alt="Wedding 9" loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(0)"><img src="images/wedding-01.jpg" alt="Wedding 1"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(1)"><img src="images/wedding-02.jpg" alt="Wedding 2"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(2)"><img src="images/wedding-03.jpg" alt="Wedding 3"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(3)"><img src="images/wedding-04.jpg" alt="Wedding 4"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(4)"><img src="images/wedding-05.jpg" alt="Wedding 5"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(5)"><img src="images/wedding-06.jpg" alt="Wedding 6"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(6)"><img src="images/wedding-07.jpg" alt="Wedding 7"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(7)"><img src="images/wedding-08.jpg" alt="Wedding 8"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(8)"><img src="images/wedding-09.jpg" alt="Wedding 9"
+                    loading="lazy"></div>
+            <div class="gallery-item" onclick="openLightbox(9)"><img src="images/wedding-10.jpg" alt="Wedding 10"
+                    loading="lazy"></div>
         </div>
     </section>
 
@@ -2525,10 +2541,11 @@
                 <div class="map-label">
                     <p class="map-tag">Lễ vu quy — 19/05/2026</p>
                     <p class="map-name">Nhà Gái — Kim Chi</p>
-                    <p class="map-addr">19 Bùi Trung Lập, TT. Gio Linh, Gio Linh, Quảng Trị</p>
+                    <p class="palace-name">Kim Cúc Palace</p>
+                    <p class="map-addr">178, 180 Đường 2/4, Thôn 6, Xã Gio Linh, Quảng Trị</p>
                 </div>
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3816.962931918496!2d107.0840044!3d16.9271206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3140e81bda4be02d%3A0x1718d31613e2659e!2zMTkgQsO5aSBUcnVuZyBM4bqtcCwgVFQuIEdpbyBMaW5oLCBHaW8gTGluaCwgUXXhuqNuZyBUcuG7iywgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1772177813960!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2859.5201972825653!2d107.09424668771983!3d16.925214487380842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3140e8050801f41d%3A0xabdfa13188652766!2sKim%20C%C3%BAc%20Palace!5e0!3m2!1sen!2s!4v1775618111237!5m2!1sen!2s"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <a class="map-btn" href="https://maps.app.goo.gl/H5wom76WHkvfAutd9" target="_blank">Chỉ đường
@@ -2538,10 +2555,11 @@
                 <div class="map-label">
                     <p class="map-tag">Lễ thành hôn — 20/05/2026</p>
                     <p class="map-name">Nhà Trai — Quốc Cường</p>
-                    <p class="map-addr">Kiệt 16/10 Trần Phú, Phường 1, Quảng Trị</p>
+                    <p class="palace-name">Roza Palace</p>
+                    <p class="map-addr">Nhà Khách Thành Cổ, Phường Quảng Trị, Quảng Trị</p>
                 </div>
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d238.79267805050554!2d107.18761974880056!3d16.742669089587785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1772180663820!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238.7799482275863!2d107.18469780407816!3d16.75281942328842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3140e5d5a06670e1%3A0x6badc85b975dd11b!2zVHJ1bmcgVMOibSBI4buZaSBOZ2jhu4sgVGnhu4djIEPGsOG7m2kgUm96YSBQYWxhY2U!5e0!3m2!1sen!2s!4v1775617653410!5m2!1sen!2s"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <a class="map-btn" href="https://maps.app.goo.gl/FZmm4oinGNamh3uTA" target="_blank">Chỉ đường
