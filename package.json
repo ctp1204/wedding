@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
