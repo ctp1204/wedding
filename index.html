@@ -1673,6 +1673,11 @@
             display: flex;
         }
 
+        #lightbox.single #lb-prev,
+        #lightbox.single #lb-next {
+            display: none;
+        }
+
         #lightbox img {
             max-width: 90vw;
             max-height: 88vh;
@@ -2530,6 +2535,25 @@
                     <div class="story-photo-overlay"></div>
                 </div>
             </div>
+
+            <!-- 2026: Cầu hôn -->
+            <div class="story-item reveal">
+                <div class="story-text">
+                    <div class="story-year">12/04/2026</div>
+                    <div class="story-heading">Lời cầu hôn</div>
+                    <p class="story-body">
+                        Khoảnh khắc đặc biệt khi chúng tôi quyết định cùng nhau bước sang một chặng đường mới.
+                        Một lời ngỏ giản dị nhưng chân thành đã được trao đi, kèm theo chiếc nhẫn và lời hứa về
+                        tương lai phía trước. Trong giây phút ấy, không chỉ có niềm hạnh phúc vỡ òa mà còn là sự
+                        tin tưởng, yêu thương và mong muốn được đồng hành cùng nhau suốt cuộc đời.
+                    </p>
+                </div>
+                <div class="story-photo">
+                    <img src="images/wedding-21.webp" alt="Lời cầu hôn 2024" loading="lazy">
+                    <div class="story-photo-overlay"></div>
+                </div>
+            </div>
+
             <!-- 19-20/05/2026: Đám cưới -->
             <div class="story-item reveal">
                 <div class="story-text">
@@ -2672,7 +2696,7 @@
     <section id="rsvp" class="reveal">
         <p class="section-tag">Xác nhận tham dự & Lưu bút</p>
         <h2 class="section-title">Hãy đến chung <em>vui</em> cùng chúng tôi</h2>
-        <p class="rsvp-note">Vui lòng xác nhận trước ngày 05/05/2026</p>
+        <p class="rsvp-note">Vui lòng xác nhận trước ngày 17/05/2026</p>
         <form class="rsvp-form" id="rsvpForm" onsubmit="submitRSVP(event)">
             <input type="text" name="name" placeholder="Họ và tên của bạn *" required />
             <input type="tel" name="phone" placeholder="Số điện thoại" />
@@ -2726,6 +2750,12 @@
                         height: 140px;
                         border-radius: 8px;
                         border: 4px solid rgba(255, 255, 255, 0.1);
+                        cursor: zoom-in;
+                        transition: transform 0.2s ease;
+                    }
+
+                    .bank-qr-img:hover {
+                        transform: scale(1.04);
                     }
 
                     @media (max-width: 500px) {
@@ -2745,7 +2775,7 @@
                         <p class="bank-num" id="bank-num-1">1903 6862 9660 10</p>
                         <button class="btn-copy" onclick="copyBank('bank-num-1', this)">Sao chép số TK</button>
                     </div>
-                    <img class="bank-qr-img" src="images/qr-code/qr-code-chure.webp" alt="QR Chú rể">
+                    <img class="bank-qr-img" src="images/qr-code/qr-code-chure.webp" alt="QR Chú rể" onclick="openImageLightbox(this.src, this.alt)">
                 </div>
 
                 <div style="height: 1px; background: rgba(255, 250, 245, 0.1); margin: 2rem 0;"></div>
@@ -2758,7 +2788,7 @@
                         <p class="bank-num" id="bank-num-2">1903 6634 0120 23</p>
                         <button class="btn-copy" onclick="copyBank('bank-num-2', this)">Sao chép số TK</button>
                     </div>
-                    <img class="bank-qr-img" src="images/qr-code/qr-code-chure.webp" alt="QR Cô dâu">
+                    <img class="bank-qr-img" src="images/qr-code/qr-code-chure.webp" alt="QR Cô dâu" onclick="openImageLightbox(this.src, this.alt)">
                 </div>
             </div>
         </div>
@@ -3119,10 +3149,21 @@
         function openLightbox(idx) {
             lbIndex = idx;
             document.getElementById('lb-img').src = galleryImgs[idx];
-            document.getElementById('lightbox').classList.add('open');
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('single');
+            lb.classList.add('open');
+        }
+        function openImageLightbox(src, alt) {
+            const img = document.getElementById('lb-img');
+            img.src = src;
+            img.alt = alt || '';
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('single', 'open');
         }
         function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('open');
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('open');
+            lb.classList.remove('single');
         }
         function lbNav(dir) {
             lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length;
