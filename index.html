@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+    <meta name="x-apple-disable-message-reformatting">
     <title>Lê Quốc Cường & Kim Chi — Wedding Day 🌸</title>
     <meta name="description"
         content="Trân trọng kính mời bạn tham dự lễ cưới của Quốc Cường & Kim Chi — ngày 19 & 20 tháng 5 năm 2026 tại Quảng Trị.">
@@ -1868,6 +1870,17 @@
             color: var(--gold-light);
         }
 
+        .bank-num a,
+        .bank-num a:link,
+        .bank-num a:visited,
+        .bank-num a:hover,
+        .bank-num a:active {
+            color: var(--gold-light) !important;
+            text-decoration: none !important;
+            pointer-events: none;
+            cursor: text;
+        }
+
         .btn-copy {
             margin-top: 0.5rem;
             padding: 0.5rem 1.2rem;
@@ -3039,7 +3052,7 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         // Video ID: "50 Năm Về Sau" - từ link người dùng cung cấp
-        const SONG_VIDEO_ID = 'xFONPDwW-lU';
+        const SONG_VIDEO_ID = '2jorArwmHA4';
         let ytPlayer;
         let isPlaying = false;
         let playerReady = false;
