@@ -42,6 +42,7 @@
             --rose-deep: #c96c6c;
             --gold: #c9a84c;
             --gold-light: #e8d5a3;
+            --blue-light: #a8c8e8;
             --cream: #fdf6ee;
             --warm-white: #fffaf5;
             --text-dark: #3a2a2a;
@@ -203,11 +204,12 @@
             flex-direction: column;
             align-items: center;
             gap: 0.4rem;
-            font-family: 'Cinzel', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
             letter-spacing: 0.3em;
             color: var(--gold);
             animation: bounce 2s infinite;
+            text-transform: uppercase;
         }
 
         @keyframes bounce {
@@ -363,12 +365,13 @@
         }
 
         .event-type {
-            font-family: 'Cinzel', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
             letter-spacing: 0.4em;
             color: var(--gold);
             margin-bottom: 0.8rem;
             text-transform: uppercase;
+            font-weight: 400;
         }
 
         .event-name {
@@ -1085,12 +1088,13 @@
         }
 
         .couple-role {
-            font-family: 'Cinzel', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             letter-spacing: 0.4em;
             color: var(--gold);
             margin-bottom: 0.5rem;
             text-transform: uppercase;
+            font-weight: 800;
         }
 
         .couple-name {
@@ -1525,6 +1529,11 @@
         .map-addr {
             font-size: 1.1rem;
             color: var(--text-mid);
+        }
+
+        .event-label {
+            color: var(--text-dark);
+            font-weight: 400;
         }
 
         .map-card iframe {
@@ -2281,7 +2290,7 @@
         <h2 class="section-title">Chú rể & <em>Cô dâu</em></h2>
         <div class="couple-cards">
             <div class="couple-card reveal">
-                <img class="couple-photo" src="images/chu-re.webp" alt="Chú rể Quốc Cường" loading="lazy">
+                <img class="couple-photo groom" src="images/chu-re.webp" alt="Chú rể Quốc Cường" loading="lazy">
                 <p class="couple-role">Chú rể</p>
                 <h3 class="couple-name">Lê Quốc Cường</h3>
                 <p class="couple-bio">Chàng trai với nụ cười ấm áp, luôn biết cách khiến Kim Chi bật cười trong mọi
@@ -2292,7 +2301,7 @@
                     sống.</p>
             </div>
             <div class="couple-card reveal">
-                <img class="couple-photo bride-photo" src="images/co-dau.webp" alt="Cô dâu Kim Chi" loading="lazy">
+                <img class="couple-photo bride" src="images/co-dau.webp" alt="Cô dâu Kim Chi" loading="lazy">
                 <p class="couple-role">Cô dâu</p>
                 <h3 class="couple-name">Phùng Kim Chi</h3>
                 <p class="couple-bio">Cô gái mang nguồn năng lượng rực rỡ, luôn xuất hiện với sự tự tin và chân thành.
@@ -2427,12 +2436,12 @@
                 <div class="event-detail">
                     <strong>Thứ Ba, 19 tháng 5, 2026</strong>
                     <em style="font-size:1rem; color:var(--gold);">03/04 Giáp Ngọ</em><br><br>
-                    📍 Địa điểm nhà gái<br>
+                    <span class="event-label">📍 Địa điểm nhà gái</span><br>
                     <div class="map-addr">
                         19 Bùi Trung Lập, Thôn 4, Xã Gio Linh, Quảng Trị
                     </div>
                     <br>
-                    📍 Địa điểm tiệc cưới<br>
+                    <span class="event-label">📍 Địa điểm tiệc cưới</span><br>
                     <strong>Nhà Hàng</strong>
                     <div class="palace-text">Kim Cúc Palace</div>
                     <div class="map-addr">178, 180 Đường 2/4, Thôn 6, Xã Gio Linh, Quảng Trị</div>
@@ -2445,12 +2454,12 @@
                 <div class="event-detail">
                     <strong>Thứ Tư, 20 tháng 5, 2026</strong>
                     <em style="font-size:1rem; color:var(--gold);">04/04 Giáp Ngọ</em><br><br>
-                    📍 Địa điểm nhà trai<br>
+                    <span class="event-label">📍 Địa điểm nhà trai</span><br>
                     <div class="map-addr">
                         Kiệt 16/10 Trần Phú, Phường Quảng Trị, Quảng Trị
                     </div>
                     <br>
-                    📍 Địa điểm tiệc cưới<br>
+                    <span class="event-label">📍 Địa điểm tiệc cưới</span><br>
                     <strong>Nhà Hàng</strong>
                     <div class="palace-text">Roza Palace</div>
                     <div class="map-addr">Nhà Khách Thành Cổ, 01 Lý Thái Tổ, Phường Quảng Trị, Quảng Trị</div>
@@ -2743,7 +2752,7 @@
             <input type="text" name="name" placeholder="Họ và tên của bạn *" required />
             <input type="tel" name="phone" placeholder="Số điện thoại" />
             <select name="event" required>
-                <option value="" disabled selected>Bạn xác nhận tham dự buổi nào?</option>
+                <option value="" disabled selected>Bạn tham dự buổi nào?</option>
                 <option value="Cả hai ngày (19 & 20/05)">Cả hai ngày (19 & 20/05)</option>
                 <option value="Lễ nhà nữ — 19/05/2026">Lễ nhà nữ — 19/05/2026</option>
                 <option value="Lễ nhà nam — 20/05/2026">Lễ nhà nam — 20/05/2026</option>
